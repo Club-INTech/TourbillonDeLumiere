@@ -27,5 +27,8 @@ void setup() {
 //Boucle principale
 void loop() {
 	Serial.println("Ca tourne!");
-	delay(500);
+        moteur.goalPositionDegree(100);
+        delay(2000);
+        moteur.goalPositionDegree(195);
+        delay(2000);
 }

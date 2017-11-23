@@ -8,7 +8,6 @@ Robot secondaire et bites en tout genre
               \__/_,-'%(%  ;  %)%
                       %\%,   %\
                         '--%'      
-
       ___
      //  7
     (_,_/\
