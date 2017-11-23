@@ -8,6 +8,8 @@
           <in>DynamixelInterface.cpp</in>
           <in>DynamixelMotor.cpp</in>
         </df>
+        <in>Zizis.cpp</in>
+        <in>Zizis.h</in>
         <in>main.cpp</in>
       </df>
       <in>platformio.ini</in>
@@ -294,6 +296,10 @@
       </makefileType>
       <item path="platformio.ini" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/Zizis.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Zizis.h" ex="false" tool="3" flavor2="0">
+      </item>
     </conf>
     <conf name="Teensy" type="0">
       <toolsSet>
@@ -563,6 +569,10 @@
         </preBuild>
       </makefileType>
       <item path="platformio.ini" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Zizis.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Zizis.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

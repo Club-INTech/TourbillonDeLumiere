@@ -19,6 +19,8 @@
           <in>DynamixelMotor.cpp</in>
           <in>DynamixelMotor.h</in>
         </df>
+        <in>Zizis.cpp</in>
+        <in>Zizis.h</in>
         <in>main.cpp</in>
       </df>
       <in>platformio.ini</in>
