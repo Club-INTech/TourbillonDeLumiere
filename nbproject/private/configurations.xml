@@ -2,6 +2,12 @@
 <configurationDescriptor version="100">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <df root="." name="0">
+      <df name="cmake-build-debug">
+        <df name="CMakeFiles">
+          <df name="3.8.2">
+          </df>
+        </df>
+      </df>
       <df name="lib">
       </df>
       <df name="src">
@@ -27,13 +33,13 @@
       </toolsSet>
       <compile>
         <compiledirpicklist>
-          <compiledirpicklistitem>${AUTO_FOLDER}</compiledirpicklistitem>
           <compiledirpicklistitem>.</compiledirpicklistitem>
+          <compiledirpicklistitem>${AUTO_FOLDER}</compiledirpicklistitem>
         </compiledirpicklist>
         <compiledir>${AUTO_FOLDER}</compiledir>
         <compilecommandpicklist>
-          <compilecommandpicklistitem>${AUTO_COMPILE}</compilecommandpicklistitem>
           <compilecommandpicklistitem>${MAKE} ${ITEM_NAME}.o</compilecommandpicklistitem>
+          <compilecommandpicklistitem>${AUTO_COMPILE}</compilecommandpicklistitem>
         </compilecommandpicklist>
         <compilecommand>${AUTO_COMPILE}</compilecommand>
       </compile>
@@ -54,11 +60,16 @@
       </nativedebugger>
       <runprofile version="9">
         <runcommandpicklist>
+          <runcommandpicklistitem>"${OUTPUT_PATH} pio run -t upload"</runcommandpicklistitem>
+          <runcommandpicklistitem>"pio run -t upload"</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
+          <runcommandpicklistitem>/usr/local/bin/platformio run -t upload</runcommandpicklistitem>
+          <runcommandpicklistitem>"/usr/local/bin/platformio run -t upload"</runcommandpicklistitem>
+          <runcommandpicklistitem>pio run -t upload</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}"</runcommand>
-        <rundir></rundir>
-        <buildfirst>false</buildfirst>
+        <runcommand>pio run -t upload</runcommand>
+        <rundir>/home/elektron/Documents/INTech/Servo/.</rundir>
+        <buildfirst>true</buildfirst>
         <terminal-type>0</terminal-type>
         <remove-instrumentation>0</remove-instrumentation>
         <environment>
@@ -72,13 +83,13 @@
       </toolsSet>
       <compile>
         <compiledirpicklist>
-          <compiledirpicklistitem>${AUTO_FOLDER}</compiledirpicklistitem>
           <compiledirpicklistitem>.</compiledirpicklistitem>
+          <compiledirpicklistitem>${AUTO_FOLDER}</compiledirpicklistitem>
         </compiledirpicklist>
         <compiledir>${AUTO_FOLDER}</compiledir>
         <compilecommandpicklist>
-          <compilecommandpicklistitem>${AUTO_COMPILE}</compilecommandpicklistitem>
           <compilecommandpicklistitem>${MAKE} ${ITEM_NAME}.o</compilecommandpicklistitem>
+          <compilecommandpicklistitem>${AUTO_COMPILE}</compilecommandpicklistitem>
         </compilecommandpicklist>
         <compilecommand>${AUTO_COMPILE}</compilecommand>
       </compile>
@@ -99,12 +110,16 @@
       </nativedebugger>
       <runprofile version="9">
         <runcommandpicklist>
+          <runcommandpicklistitem>"${OUTPUT_PATH} pio run -t upload"</runcommandpicklistitem>
+          <runcommandpicklistitem>"pio run -t upload"</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
+          <runcommandpicklistitem>"/usr/local/bin/platformio run -t upload"</runcommandpicklistitem>
+          <runcommandpicklistitem>pio run -t upload</runcommandpicklistitem>
           <runcommandpicklistitem>/usr/local/bin/platformio run -t upload</runcommandpicklistitem>
         </runcommandpicklist>
         <runcommand>/usr/local/bin/platformio run -t upload</runcommand>
-        <rundir></rundir>
-        <buildfirst>false</buildfirst>
+        <rundir>/home/elektron/Documents/INTech/TourbillonDeLumiere</rundir>
+        <buildfirst>true</buildfirst>
         <terminal-type>0</terminal-type>
         <remove-instrumentation>0</remove-instrumentation>
         <environment>

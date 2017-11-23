@@ -5,11 +5,8 @@
       <df name="src">
         <df name="Actuators">
           <in>Dynamixel.cpp</in>
-          <in>Dynamixel.h</in>
           <in>DynamixelInterface.cpp</in>
-          <in>DynamixelInterface.h</in>
           <in>DynamixelMotor.cpp</in>
-          <in>DynamixelMotor.h</in>
         </df>
         <in>main.cpp</in>
       </df>
@@ -305,13 +302,260 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <codeAssistance>
+        <includeAdditional>true</includeAdditional>
       </codeAssistance>
       <makefileType>
         <makeTool>
           <buildCommandWorkingDir>.</buildCommandWorkingDir>
-          <buildCommand>${MAKE}</buildCommand>
-          <cleanCommand>${MAKE} clean</cleanCommand>
+          <buildCommand>/usr/local/bin/platformio -f -c netbeans run</buildCommand>
+          <cleanCommand>/usr/local/bin/platformio -f -c netbeans run --target clean</cleanCommand>
           <executablePath></executablePath>
+          <cTool>
+            <incDir>
+              <pElem>src</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/cores/teensy3</pElem>
+              <pElem>/home/elektron/Documents/INTech/TourbillonDeLumiere/src</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/ADC</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/AccelStepper/src</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_CC3000</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_CC3000/utility</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_GFX</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_ILI9340</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_ILI9341</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_NeoPixel</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_RA8875</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_SSD1306</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_ST7735</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_STMPE610</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_VS1053</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_nRF8001</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_nRF8001/utility</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/AltSoftSerial</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Artnet</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Audio</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Audio/utility</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Bounce</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Bounce2</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/CapacitiveSensor</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/CryptoAccel/src</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/DS1307RTC</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/DmxSimple</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/DogLcd</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/EEPROM</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/EasyTransfer</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/EasyTransferI2C</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Encoder</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Encoder/utility</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Entropy</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Ethernet</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/FastCRC</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/FastLED</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/FlexCAN</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/FlexiTimer2</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/FreqCount</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/FreqMeasure</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/FreqMeasureMulti</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/FrequencyTimer2</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/ILI9341_t3</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/IRremote</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Keypad/src</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/LedControl/src</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/LedDisplay</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/LiquidCrystal/src</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/LiquidCrystalFast</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/LowPower</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/MFRC522/src</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/MIDI/src</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Metro</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/MsTimer2</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/NXPMotionSense</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/NXPMotionSense/utility</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/NewPing</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/OSC</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/OctoWS2811</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/OneWire</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/PS2Keyboard</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/PS2Keyboard/utility</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/PWMServo</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Ping</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/PulsePosition</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/RA8875</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/RadioHead</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/ResponsiveAnalogRead/src</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/SD</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/SD/utility</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/SPI</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/SPIFlash</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/ST7565</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/ST7735_t3</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/SerialFlash</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Servo</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/ShiftPWM</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Snooze</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Snooze/utility</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/SoftPWM</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/SoftwareSerial</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/TFT_ILI9163C</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Talkie</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/TeensyThreads</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Time</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/TimeAlarms</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/TimerOne</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/TimerThree</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/TinyGPS</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Tlc5940</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/TouchScreen</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/USBHost_t36</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/UTFT</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/VirtualWire</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Wire</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Wire/utility</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/XBee</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/XPT2046_Touchscreen</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/i2c_t3</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/ks0108</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/openGLCD</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/ssd1351</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/x10</pElem>
+              <pElem>/home/elektron/.platformio/packages/toolchain-gccarmnoneeabi/arm-none-eabi/include</pElem>
+              <pElem>/home/elektron/.platformio/packages/toolchain-gccarmnoneeabi/lib/gcc/arm-none-eabi/5.4.1/include</pElem>
+              <pElem>/home/elektron/.platformio/packages/toolchain-gccarmnoneeabi/lib/gcc/arm-none-eabi/5.4.1/include-fixed</pElem>
+              <pElem>/home/elektron/.platformio/packages/tool-unity</pElem>
+            </incDir>
+            <preprocessorList>
+              <Elem>ARDUINO=10805</Elem>
+              <Elem>F_CPU=120000000L</Elem>
+              <Elem>LAYOUT_US_ENGLISH</Elem>
+              <Elem>PLATFORMIO=30401</Elem>
+              <Elem>TEENSY35</Elem>
+              <Elem>TEENSYDUINO=140</Elem>
+              <Elem>USB_SERIAL</Elem>
+              <Elem>__MK64FX512__</Elem>
+            </preprocessorList>
+          </cTool>
+          <ccTool>
+            <incDir>
+              <pElem>src</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/cores/teensy3</pElem>
+              <pElem>/home/elektron/Documents/INTech/TourbillonDeLumiere/src</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/ADC</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/AccelStepper/src</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_CC3000</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_CC3000/utility</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_GFX</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_ILI9340</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_ILI9341</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_NeoPixel</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_RA8875</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_SSD1306</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_ST7735</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_STMPE610</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_VS1053</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_nRF8001</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Adafruit_nRF8001/utility</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/AltSoftSerial</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Artnet</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Audio</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Audio/utility</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Bounce</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Bounce2</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/CapacitiveSensor</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/CryptoAccel/src</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/DS1307RTC</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/DmxSimple</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/DogLcd</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/EEPROM</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/EasyTransfer</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/EasyTransferI2C</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Encoder</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Encoder/utility</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Entropy</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Ethernet</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/FastCRC</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/FastLED</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/FlexCAN</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/FlexiTimer2</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/FreqCount</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/FreqMeasure</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/FreqMeasureMulti</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/FrequencyTimer2</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/ILI9341_t3</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/IRremote</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Keypad/src</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/LedControl/src</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/LedDisplay</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/LiquidCrystal/src</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/LiquidCrystalFast</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/LowPower</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/MFRC522/src</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/MIDI/src</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Metro</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/MsTimer2</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/NXPMotionSense</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/NXPMotionSense/utility</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/NewPing</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/OSC</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/OctoWS2811</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/OneWire</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/PS2Keyboard</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/PS2Keyboard/utility</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/PWMServo</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Ping</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/PulsePosition</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/RA8875</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/RadioHead</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/ResponsiveAnalogRead/src</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/SD</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/SD/utility</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/SPI</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/SPIFlash</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/ST7565</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/ST7735_t3</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/SerialFlash</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Servo</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/ShiftPWM</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Snooze</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Snooze/utility</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/SoftPWM</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/SoftwareSerial</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/TFT_ILI9163C</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Talkie</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/TeensyThreads</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Time</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/TimeAlarms</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/TimerOne</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/TimerThree</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/TinyGPS</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Tlc5940</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/TouchScreen</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/USBHost_t36</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/UTFT</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/VirtualWire</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Wire</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/Wire/utility</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/XBee</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/XPT2046_Touchscreen</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/i2c_t3</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/ks0108</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/openGLCD</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/ssd1351</pElem>
+              <pElem>/home/elektron/.platformio/packages/framework-arduinoteensy/libraries/x10</pElem>
+              <pElem>/home/elektron/.platformio/packages/toolchain-gccarmnoneeabi/arm-none-eabi/include</pElem>
+              <pElem>/home/elektron/.platformio/packages/toolchain-gccarmnoneeabi/lib/gcc/arm-none-eabi/5.4.1/include</pElem>
+              <pElem>/home/elektron/.platformio/packages/toolchain-gccarmnoneeabi/lib/gcc/arm-none-eabi/5.4.1/include-fixed</pElem>
+              <pElem>/home/elektron/.platformio/packages/tool-unity</pElem>
+            </incDir>
+            <preprocessorList>
+              <Elem>ARDUINO=10805</Elem>
+              <Elem>F_CPU=120000000L</Elem>
+              <Elem>LAYOUT_US_ENGLISH</Elem>
+              <Elem>PLATFORMIO=30401</Elem>
+              <Elem>TEENSY35</Elem>
+              <Elem>TEENSYDUINO=140</Elem>
+              <Elem>USB_SERIAL</Elem>
+              <Elem>__MK64FX512__</Elem>
+            </preprocessorList>
+          </ccTool>
         </makeTool>
         <preBuild>
           <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>
@@ -319,23 +563,6 @@
         </preBuild>
       </makefileType>
       <item path="platformio.ini" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/Actuators/Dynamixel.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/Actuators/Dynamixel.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/Actuators/DynamixelInterface.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="src/Actuators/DynamixelInterface.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/Actuators/DynamixelMotor.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/Actuators/DynamixelMotor.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>

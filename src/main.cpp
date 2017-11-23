@@ -10,8 +10,6 @@ DynamixelMotor moteur(interface,254); //Ouvre une communication avec tout les AX
 //Initialisation de la Serie
 void setup() {
 	/*serie*/
-
-
 	Serial.begin(115200);
 	Serial.println("Série OK");
 	delay(250);
@@ -26,7 +24,14 @@ void setup() {
 
 //Boucle principale
 void loop() {
-	Serial.println("Ca tourne!");
+	Serial.println("  ___");
+        Serial.println(" //  7");
+        Serial.println("(_,_/\\");
+        Serial.println("\\    \\");
+        Serial.println(" \\    \\");
+        Serial.println(" _\\    \\_");
+        Serial.println("(   \\     )");
+        Serial.println(" \\___|\___/  ");
         moteur.goalPositionDegree(100);
         delay(2000);
         moteur.goalPositionDegree(195);
