@@ -1,0 +1,21 @@
+/home/trotfunky/Logiciels/clion-2017.2.3/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/home/trotfunky/Programmation/Projets/Tests CLion/Teensy Template"
+CMake Error: Could not find cmake module file: CMakeDetermineTemplateCompiler.cmake
+CMake Error: Error required internal CMake variable not set, cmake may not be built correctly.
+Missing variable is:
+CMAKE_Template_COMPILER_ENV_VAR
+CMake Error: Error required internal CMake variable not set, cmake may not be built correctly.
+Missing variable is:
+CMAKE_Template_COMPILER
+CMake Error: Could not find cmake module file: /home/trotfunky/Programmation/Projets/Tests CLion/Teensy Template/cmake-build-debug/CMakeFiles/3.8.2/CMakeTemplateCompiler.cmake
+CMake Error at CMakeLists.txt:2 (project):
+  No CMAKE_Template_COMPILER could be found.
+
+  Tell CMake where to find the compiler by setting the CMake cache entry
+  CMAKE_Template_COMPILER to the full path to the compiler, or to the
+  compiler name if it is in the PATH.
+
+
+CMake Error: Could not find cmake module file: CMakeTemplateInformation.cmake
+CMake Error: CMAKE_Template_COMPILER not set, after EnableLanguage
+-- Configuring incomplete, errors occurred!
+See also "/home/trotfunky/Programmation/Projets/Tests CLion/Teensy Template/cmake-build-debug/CMakeFiles/CMakeOutput.log".

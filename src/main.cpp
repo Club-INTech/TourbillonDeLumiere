@@ -2,18 +2,19 @@
 #include <Actuators/DynamixelInterface.h>
 #include <Actuators/DynamixelMotor.h>
 #include <Zizis.h>
+#include <string.h>
 
 HardwareSerial serie;
 DynamixelInterface interface(serie,1); //S'ouvre sur le port 1
 
 DynamixelMotor moteur(interface,254); //Ouvre une communication avec tout les AX12 - Remplacer 254 par l'ID
 
-Zizis myPenis(1);
+Zizis myPenis(2);
 
 //Initialisation de la Serie
 void setup() {
 	/*serie*/
-	Serial.begin(115200);
+	Serial.begin(9600);
 	Serial.println("Série OK");
 	delay(250);
 	
@@ -45,6 +46,7 @@ void loop() {
     moteur.goalPositionDegree(195);
     delay(2000);
     delay(500);*/
-    myPenis.print();
+    myPenis.spacePrint();
+    myPenis.randomise();
     delay(500);
 }
