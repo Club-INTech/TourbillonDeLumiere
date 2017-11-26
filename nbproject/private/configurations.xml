@@ -19,9 +19,12 @@
           <in>DynamixelMotor.cpp</in>
           <in>DynamixelMotor.h</in>
         </df>
+        <in>Robot.cpp</in>
+        <in>Robot.h</in>
         <in>Zizis.cpp</in>
         <in>Zizis.h</in>
         <in>main.cpp</in>
+        <in>pinMapping.h</in>
       </df>
       <in>platformio.ini</in>
     </df>

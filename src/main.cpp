@@ -1,15 +1,9 @@
 #include "Arduino.h"
-#include <Actuators/DynamixelInterface.h>
-#include <Actuators/DynamixelMotor.h>
 #include <Zizis.h>
-#include <string.h>
-
-HardwareSerial serie;
-DynamixelInterface interface(serie,1); //S'ouvre sur le port 1
-
-DynamixelMotor moteur(interface,254); //Ouvre une communication avec tout les AX12 - Remplacer 254 par l'ID
+#include <Robot.h>
 
 Zizis myPenis(2);
+Robot robot;
 
 //Initialisation de la Serie
 void setup() {
@@ -17,36 +11,27 @@ void setup() {
 	Serial.begin(9600);
 	Serial.println("Série OK");
 	delay(250);
-	
-	
-	interface.begin(9600);  //Ouvre l'interface
-
-	moteur.init();			//Initialise le moteur
-	moteur.enableTorque();	//Et active le couple
-	moteur.jointMode();
+        
+        robot.init();
 }
 
 //Boucle principale
 void loop() {
-    /*String espaces = " ";
-    int nb_espaces = random(0,50);
-    for( int i=0; i<nb_espaces; i++) {
-        espaces += " ";
+    while(!robot.start()) { //on attend le debut du match
     }
-    Serial.println(espaces+"  ___");
-    Serial.println(espaces+" //  7");
-    Serial.println(espaces+"(_,_/\\");
-    Serial.println(espaces+"\\    \\");
-    Serial.println(espaces+" \\    \\");
-    Serial.println(espaces+" _\\    \\_");
-    Serial.println(espaces+"(   \\     )");
-    Serial.println(espaces+" \\___|\\___/  ");
-    moteur.goalPositionDegree(100);
-    delay(2000);
-    moteur.goalPositionDegree(195);
-    delay(2000);
-    delay(500);*/
-    myPenis.spacePrint();
-    myPenis.randomise();
-    delay(500);
+    
+    while(!robot.isUnderLoader()) { //on se positionne sous le tube
+        robot.moveForward(100);
+    }
+    
+    for(int i=0; i<8; i++) { //on lance les 8 balles
+        robot.loadBall();
+        robot.fire();
+    }
+    
+    while(true) { //on fait des jolis affichages
+        myPenis.spacePrint(); //impression du zizi avec des espaces devant
+        myPenis.randomise(); //changement aléatoire de type de zizi
+        delay(500);
+    }
 }
