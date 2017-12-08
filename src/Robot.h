@@ -29,7 +29,7 @@ public:
     void loadBall();
     void fire();
 private:
-    HardwareSerial serie;
+    //HardwareSerial serie;
     DynamixelInterface interface; //S'ouvre sur le port 1
     DynamixelMotor servo; //Ouvre une communication avec tout les AX12 - Remplacer 254 par l'ID
 };

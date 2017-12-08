@@ -10,14 +10,14 @@ void setup() {
 	/*serie*/
 	Serial.begin(9600);
 	Serial.println("Série OK");
-	delay(250);
+	//delay(250);
         
         robot.init();
 }
 
 //Boucle principale
 void loop() {
-    while(!robot.start()) { //on attend le debut du match
+    /*while(!robot.start()) { //on attend le debut du match
     }
     
     while(!robot.isUnderLoader()) { //on se positionne sous le tube
@@ -33,5 +33,6 @@ void loop() {
         myPenis.spacePrint(); //impression du zizi avec des espaces devant
         myPenis.randomise(); //changement aléatoire de type de zizi
         delay(500);
-    }
+    }*/
+    robot.moveForward(100);
 }
