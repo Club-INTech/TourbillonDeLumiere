@@ -24,9 +24,8 @@ void Robot::init() {
     servo.jointMode();
     
     /*Declaration des sorties*/
-    pinMode(PIN_MOTEUR_ENABLE, OUTPUT);
-    pinMode(PIN_MOTEUR_DIR1, OUTPUT);
-    pinMode(PIN_MOTEUR_DIR2, OUTPUT);
+    pinMode(PIN_MOTEUR_PWM, OUTPUT);
+    pinMode(PIN_MOTEUR_DIR, OUTPUT);
     pinMode(PIN_TURBINE, OUTPUT);
     
     /*Declaration des entrees*/
@@ -36,8 +35,8 @@ void Robot::init() {
     
     /*Activation des resistances de pull-up internes*/
     digitalWrite(PIN_FIN_COURSE, HIGH);
-    digitalWrite(PIN_FIN_COURSE, HIGH);
-    digitalWrite(PIN_FIN_COURSE, HIGH);
+    digitalWrite(PIN_LASER, HIGH);
+    digitalWrite(PIN_JUMPER, HIGH);
     
     servo.speed(100);
     servo.goalPositionDegree(100);
@@ -54,10 +53,9 @@ bool Robot::isUnderLoader() {
 
 void Robot::moveForward(int speedPercent) {
     //fait avancer le robot en avant a une vitesse speedPercent % de sa vitesse max
-    digitalWrite(PIN_MOTEUR_ENABLE, HIGH);
-    digitalWrite(PIN_MOTEUR_DIR2, LOW);
+    digitalWrite(PIN_MOTEUR_PWM, HIGH);
     int speedPwm = map(speedPercent, 0, 100, 0, 125); //on bloque au max pwm a 125 car moteur 12V alimente en 24V
-    analogWrite(PIN_MOTEUR_DIR1, speedPwm);
+    analogWrite(PIN_MOTEUR_DIR, speedPwm);
 }
 
 void Robot::loadBall() {

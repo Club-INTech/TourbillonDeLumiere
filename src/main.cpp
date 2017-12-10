@@ -34,5 +34,7 @@ void loop() {
         myPenis.randomise(); //changement aléatoire de type de zizi
         delay(500);
     }*/
-    robot.moveForward(100);
+    
+    Serial.println(digitalRead(PIN_LASER));
+    delay(100);
 }

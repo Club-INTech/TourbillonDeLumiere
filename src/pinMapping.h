@@ -14,13 +14,12 @@
 #ifndef PINMAPPING_H
 #define PINMAPPING_H
 
-#define PIN_MOTEUR_ENABLE 3
-#define PIN_MOTEUR_DIR1 4
-#define PIN_MOTEUR_DIR2 7
+#define PIN_MOTEUR_PWM 5
+#define PIN_MOTEUR_DIR 6
 #define PIN_TURBINE 8
 #define PIN_FIN_COURSE 11
 #define PIN_JUMPER 12
-#define PIN_LASER 13
+#define PIN_LASER 14
 
 #endif /* PINMAPPING_H */
 
