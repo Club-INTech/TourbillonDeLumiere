@@ -5,6 +5,8 @@
 Zizis myPenis(2);
 Robot robot;
 
+bool etat=0;
+
 //Initialisation de la Serie
 void setup() {
 	/*serie*/
@@ -17,12 +19,14 @@ void setup() {
 
 //Boucle principale
 void loop() {
-    /*while(!robot.start()) { //on attend le debut du match
+   /* while(!robot.start()) { //on attend le debut du match
     }
     
     while(!robot.isUnderLoader()) { //on se positionne sous le tube
         robot.moveForward(100);
     }
+    
+    robot.stop();
     
     for(int i=0; i<8; i++) { //on lance les 8 balles
         robot.loadBall();
@@ -35,6 +39,13 @@ void loop() {
         delay(500);
     }*/
     
-    Serial.println(digitalRead(PIN_LASER));
-    delay(100);
+    /*while (!robot.isUnderLoader()) {
+            robot.moveForward(100);
+    }
+    robot.stop();
+    delay(1000);
+    robot.loadBall();
+    robot.fire();*/
+    
+    robot.moveForward(100);
 }
