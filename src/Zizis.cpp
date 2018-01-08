@@ -12,7 +12,7 @@
  */
 
 #include "Zizis.h"
-#include "Arduino.h"
+#include <Arduino.h>
 
 Zizis::Zizis(int index) {
     changeType(index);

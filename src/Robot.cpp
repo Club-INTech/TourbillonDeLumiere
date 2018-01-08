@@ -4,14 +4,14 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   Robot.cpp
  * Author: elektron
- * 
+ *
  * Created on 26 novembre 2017, 11:19
  */
 
-#include "Robot.h"
+#include <Robot.h>
 
 
 Robot::Robot() : interface(Serial2), servo(interface, 254) {
@@ -22,29 +22,29 @@ void Robot::init() {
     servo.init();			//Initialise le moteur
     servo.enableTorque();	//Et active le couple
     servo.jointMode();
-    
+
     /*Declaration des sorties*/
     pinMode(PIN_MOTEUR_PWM, OUTPUT);
     pinMode(PIN_MOTEUR_DIR, OUTPUT);
     pinMode(PIN_TURBINE, OUTPUT);
-    
+
     /*Declaration des entrees*/
     pinMode(PIN_FIN_COURSE, INPUT);
     pinMode(PIN_JUMPER, INPUT);
     pinMode(PIN_LASER, INPUT);
     pinMode(PIN_SELECT_SIDE, INPUT);
-    
+
     /*Activation des resistances de pull-up internes*/
     digitalWrite(PIN_FIN_COURSE, HIGH);
     digitalWrite(PIN_LASER, HIGH);
     digitalWrite(PIN_JUMPER, HIGH);
     digitalWrite(PIN_SELECT_SIDE, HIGH);
-    
+
     /*Mise à 0 initiale des sorties*/
     digitalWrite(PIN_MOTEUR_PWM, LOW);
     digitalWrite(PIN_MOTEUR_DIR, LOW);
     digitalWrite(PIN_TURBINE, LOW);
-    
+
     servo.speed(100);
     servo.goalPositionDegree(195);
 }
@@ -70,7 +70,7 @@ bool Robot::start() {
 
 bool Robot::isUnderLoader() {
     //indique si le robot est sous le tube de balles
-    return !digitalRead(PIN_FIN_COURSE);
+    return digitalRead(PIN_FIN_COURSE);
 }
 
 void Robot::moveForward(int speedPercent) {
@@ -86,8 +86,8 @@ void Robot::stop() {
 
 void Robot::loadBall() {
     //permet de charger une balle dans le canon
-    const int angle_load = 0;
-    const int angle_mid = 0;
+    int angle_load = 0;
+    int angle_mid = 0;
 
     if (isGreen()) {
         angle_load = 300;

@@ -17,10 +17,6 @@
                     <name>Default</name>
                     <type>0</type>
                 </confElem>
-                <confElem>
-                    <name>Teensy</name>
-                    <type>0</type>
-                </confElem>
             </confList>
             <formatting>
                 <project-formatting-style>false</project-formatting-style>

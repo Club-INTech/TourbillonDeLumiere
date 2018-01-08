@@ -14,7 +14,7 @@
 #ifndef ZIZIS_H
 #define ZIZIS_H
 
-#include <locale>
+//#include <locale>
 
 
 class Zizis {

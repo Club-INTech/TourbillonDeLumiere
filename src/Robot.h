@@ -14,7 +14,7 @@
 #ifndef ROBOT_H
 #define ROBOT_H
 
-#include "Arduino.h"
+#include <Arduino.h>
 #include <Actuators/DynamixelInterface.h>
 #include <Actuators/DynamixelMotor.h>
 #include <pinMapping.h>
