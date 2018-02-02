@@ -1,7 +1,8 @@
 #ifndef AFFICHEUR_H
 #define AFFICHEUR_H
 
-#include <Wire.h> // Include the Arduino SPI library
+#include <Wire.h> // Include the Arduino I2C library
+#define DISPLAY_ADDRESS 0x01
 
 class Afficheur {
   public:
@@ -12,8 +13,8 @@ class Afficheur {
     void setBrightnessI2C(byte value);
     void setDecimalsI2C(byte decimals);
     void addScore(int value);
+    void displayInt(int number);
   private:
-    const byte s7sAddress = 0x71;
     int score = 0;
 };
 

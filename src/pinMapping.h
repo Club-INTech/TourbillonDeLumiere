@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   pinMapping.h
  * Author: elektron
  *
@@ -17,12 +17,12 @@
 #define PIN_MOTEUR_PWM 5
 #define PIN_MOTEUR_DIR 6
 #define PIN_TURBINE 8
-#define PIN_FIN_COURSE 11
+#define PIN_FIN_COURSE 14
 #define PIN_JUMPER 12
-#define PIN_LASER 14
+//#define PIN_LASER 14
+#define PIN_LASER 666
 #define PIN_SELECT_SIDE 666
 #define PIN_LED_GREEN 667
 #define PIN_LED_RED 668
 
 #endif /* PINMAPPING_H */
-

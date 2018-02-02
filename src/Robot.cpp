@@ -45,13 +45,16 @@ void Robot::init() {
     digitalWrite(PIN_MOTEUR_DIR, LOW);
     digitalWrite(PIN_TURBINE, LOW);
 
-    servo.speed(100);
-    servo.goalPositionDegree(195);
+    servo.speed(500);
+    if (isGreen()) { //Permet au laser d'être dans le trou du tourbillon au début du match
+      servo.goalPositionDegree(235);
+    } else {
+      servo.goalPositionDegree(155);
+    }
 }
 
 void Robot::setLedSide() {
-    bool side = digitalRead(PIN_SELECT_SIDE);
-    if (side) {
+    if (isGreen()) {
         digitalWrite(PIN_LED_GREEN, HIGH);
         digitalWrite(PIN_LED_RED, LOW);
     } else {
@@ -61,7 +64,7 @@ void Robot::setLedSide() {
 }
 
 bool Robot::isGreen() {
-    return digitalRead(PIN_SELECT_SIDE);
+    return !digitalRead(PIN_SELECT_SIDE);
 }
 
 bool Robot::start() {
@@ -75,8 +78,8 @@ bool Robot::isUnderLoader() {
 
 void Robot::moveForward(int speedPercent) {
     //fait avancer le robot en avant a une vitesse speedPercent % de sa vitesse max
-    digitalWrite(PIN_MOTEUR_DIR, LOW);
-    int speedPwm = map(speedPercent, 0, 100, 0, 255); //on bloque au max pwm a 125 car moteur 12V alimente en 24V
+    digitalWrite(PIN_MOTEUR_DIR, HIGH);
+    int speedPwm = map(speedPercent, 0, 100, 0, 75); //on bloque au max pwm a 125 car moteur 12V alimente en 24V
     analogWrite(PIN_MOTEUR_PWM, speedPwm);
 }
 
@@ -96,14 +99,16 @@ void Robot::loadBall() {
         angle_load = 100;
         angle_mid = 195;
     }
+    servo.speed(100);
+
     servo.goalPositionDegree(angle_load);
-    delay(2000);
+    delay(1750);
     servo.goalPositionDegree(angle_load - 5); //on bouge un peu pour bien récupérer la balle
     delay(500);
     servo.goalPositionDegree(angle_load);
     delay(500);
     servo.goalPositionDegree(angle_mid);
-    delay(2000);
+    delay(1750);
     servo.goalPositionDegree(angle_mid - 10); //on bouge une peu pour bien faire tomber la balle
     delay(500);
     servo.goalPositionDegree(angle_mid);
@@ -111,10 +116,11 @@ void Robot::loadBall() {
 }
 
 void Robot::fire() {
+    #define TENTATIVE_MAX 1
     int attempt = 0; //nb de tentatives
     bool isFired = 0; //variable qui indique si la balle est partie
     long lastMillis = millis();
-    while (!isFired && attempt < 4) { //tant que la balle n'est pas partie ou qu'on n'a pas fait 4 tentatives
+    while (!isFired && attempt < TENTATIVE_MAX) { //tant que la balle n'est pas partie ou qu'on n'a pas fait 4 tentatives
         analogWrite(PIN_TURBINE, 200);
         lastMillis = millis();
         while(millis() - lastMillis < 500) { //on attend 500ms en verifiant si la balle est partie
