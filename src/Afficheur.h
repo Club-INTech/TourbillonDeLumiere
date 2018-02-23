@@ -14,6 +14,7 @@ class Afficheur {
     void setDecimalsI2C(byte decimals);
     void addScore(int value);
     void displayInt(int number);
+    void constrainScore();
   private:
     int score = 0;
 };

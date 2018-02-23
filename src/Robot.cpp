@@ -19,6 +19,7 @@ Robot::Robot() : interface(Serial2), servo(interface, 254) {
 
 void Robot::init() {
     interface.begin(9600);  //Ouvre l'interface
+    servo.communicationSpeed(9600);
     servo.init();			//Initialise le moteur
     servo.enableTorque();	//Et active le couple
     servo.jointMode();
@@ -54,6 +55,7 @@ void Robot::init() {
 }
 
 void Robot::setLedSide() {
+    //allume des leds de couleurs pour la sélection du côté (vert ou orange)
     if (isGreen()) {
         digitalWrite(PIN_LED_GREEN, HIGH);
         digitalWrite(PIN_LED_RED, LOW);
@@ -64,10 +66,12 @@ void Robot::setLedSide() {
 }
 
 bool Robot::isGreen() {
+    //permet de faire la selection du côté
     return !digitalRead(PIN_SELECT_SIDE);
 }
 
 bool Robot::start() {
+    //retourne l'état du jumper pour savoir si on démarre le match
     return (digitalRead(PIN_JUMPER));
 }
 
@@ -79,24 +83,25 @@ bool Robot::isUnderLoader() {
 void Robot::moveForward(int speedPercent) {
     //fait avancer le robot en avant a une vitesse speedPercent % de sa vitesse max
     digitalWrite(PIN_MOTEUR_DIR, HIGH);
-    int speedPwm = map(speedPercent, 0, 100, 0, 75); //on bloque au max pwm a 125 car moteur 12V alimente en 24V
+    int speedPwm = map(speedPercent, 0, 100, 0, 125); //on bloque au max pwm a 125 car moteur 12V alimente en 24V
     analogWrite(PIN_MOTEUR_PWM, speedPwm);
 }
 
 void Robot::stop() {
+    //arrête le moteur du robot
     analogWrite(PIN_MOTEUR_PWM, 0);
 }
 
 void Robot::loadBall() {
     //permet de charger une balle dans le canon
-    int angle_load = 0;
-    int angle_mid = 0;
+    int angle_load = 100;
+    int angle_mid = 195;
 
     if (isGreen()) {
-        angle_load = 300;
+        angle_load = 95;
         angle_mid = 195;
     } else {
-        angle_load = 100;
+        angle_load = 300;
         angle_mid = 195;
     }
     servo.speed(100);
@@ -116,6 +121,7 @@ void Robot::loadBall() {
 }
 
 void Robot::fire() {
+    //permet d'allumer la turbine, en vérifiant qu'une balle est partie grâce au laser
     #define TENTATIVE_MAX 1
     int attempt = 0; //nb de tentatives
     bool isFired = 0; //variable qui indique si la balle est partie

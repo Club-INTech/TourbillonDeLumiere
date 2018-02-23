@@ -75,5 +75,12 @@ void Afficheur::init() {
 
 void Afficheur::addScore(int value) {
   score += value;
-  display((String)score);
+  constrainScore();
+  displayInt(score);
+}
+
+void Afficheur::constrainScore(){
+  if(score > 40 ){
+    score = 40;
+  }
 }

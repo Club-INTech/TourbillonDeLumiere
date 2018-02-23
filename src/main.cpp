@@ -16,9 +16,9 @@ void setup() {
 	//delay(250);
 
   robot.init();
-	delay(5000);
-	//afficheur.init();
-	//afficheur.setBrightnessI2C(0xFF);
+	afficheur.init();
+	afficheur.setBrightnessI2C(0xFF);
+	afficheur.display("SUUS");
 }
 
 //Boucle principale
@@ -29,23 +29,23 @@ void loop() {
     //while(!robot.start()) { //on attend le debut du match
     //}
 
-    /*while(!robot.isUnderLoader()) { //on se positionne sous le tube
-        robot.moveForward(100);
-    }*/
+    while(!robot.isUnderLoader()) { //on se positionne sous le tube
+        robot.moveForward(50); //50% de sa vitesse sinon il fonce sous les balles comme un taré
+    }
 
     robot.stop();
 
     for(int i=0; i<8; i++) { //on lance les 8 balles
         robot.loadBall();
         robot.fire();
-				//afficheur.addScore(5);
+				afficheur.addScore(5);
     }
 		for (;;){}
-    /*while(true) { //on fait des jolis affichages
+    while(true) { //on fait des jolis affichages
         myPenis.spacePrint(); //impression du zizi avec des espaces devant
         myPenis.randomise(); //changement aléatoire de type de zizi
         delay(500);
-    }*/
+    }
 
 }
 
