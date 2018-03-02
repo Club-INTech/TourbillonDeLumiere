@@ -26,6 +26,9 @@ void loop() {
 
     //robot.setLedSide();
 
+    while(robot.start()) { //on attend le debut du match
+    }
+
     while(!robot.start()) { //on attend le debut du match , front montant
     }
 
