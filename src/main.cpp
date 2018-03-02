@@ -26,17 +26,21 @@ void loop() {
 
     //robot.setLedSide();
 
-    //while(!robot.start()) { //on attend le debut du match
-    //}
+    while(robot.start()) { //on attend le debut du match
+    }
+
+    while(!robot.start()) { //on attend le debut du match , front montant
+    }
 
     while(!robot.isUnderLoader()) { //on se positionne sous le tube
-        robot.moveForward(50); //50% de sa vitesse sinon il fonce sous les balles comme un taré
+        robot.moveForward(60); //60% de sa vitesse sinon il fonce sous les balles comme un taré
     }
 
     robot.stop();
 
     for(int i=0; i<8; i++) { //on lance les 8 balles
         robot.loadBall();
+        robot.fire();
         robot.fire();
 				afficheur.addScore(5);
     }

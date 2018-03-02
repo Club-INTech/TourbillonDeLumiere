@@ -46,7 +46,7 @@ void Robot::init() {
     digitalWrite(PIN_MOTEUR_DIR, LOW);
     digitalWrite(PIN_TURBINE, LOW);
 
-    servo.speed(500);
+    servo.speed(100);
     if (isGreen()) { //Permet au laser d'être dans le trou du tourbillon au début du match
       servo.goalPositionDegree(235);
     } else {
@@ -67,6 +67,7 @@ void Robot::setLedSide() {
 
 bool Robot::isGreen() {
     //permet de faire la selection du côté
+    Serial.println(digitalRead(PIN_SELECT_SIDE) ? "I AM YELLOW" : "I AM GREEN");
     return !digitalRead(PIN_SELECT_SIDE);
 }
 
@@ -97,8 +98,8 @@ void Robot::loadBall() {
     int angle_load = 100;
     int angle_mid = 195;
 
-    if (isGreen()) {
-        angle_load = 95;
+    if (!isGreen()) {
+        angle_load = 110;
         angle_mid = 195;
     } else {
         angle_load = 300;
