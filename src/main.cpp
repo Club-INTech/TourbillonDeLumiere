@@ -52,29 +52,3 @@ void loop() {
     }
 
 }
-
-/*#include <Wire.h>
-#include <Arduino.h>
-#include "Afficheur.h"
-
-Afficheur afficheur;
-
-void setup()
-{
-  Wire.begin();
-
-  Serial.begin(9600);
-  Serial.println("\nI2C Scanner");
-
-  afficheur.init();
-  afficheur.displayInt(42);
-}
-
-
-void loop()
-{
-  afficheur.display("SUUS");
-  delay(1000);
-  afficheur.display("BITE");
-  delay(1000);
-}*/
