@@ -26,9 +26,6 @@ void loop() {
 
     //robot.setLedSide();
 
-    while(robot.start()) { //on attend le debut du match
-    }
-
     while(!robot.start()) { //on attend le debut du match , front montant
     }
 
@@ -44,7 +41,7 @@ void loop() {
         robot.fire();
 				afficheur.addScore(5);
     }
-		for (;;){}
+
     while(true) { //on fait des jolis affichages
         myPenis.spacePrint(); //impression du zizi avec des espaces devant
         myPenis.randomise(); //changement aléatoire de type de zizi
