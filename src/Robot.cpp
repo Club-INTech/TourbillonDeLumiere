@@ -46,6 +46,8 @@ void Robot::init() {
     digitalWrite(PIN_MOTEUR_DIR, LOW);
     digitalWrite(PIN_TURBINE, LOW);
 
+    attachInterrupt(PIN_FIN_COURSE, comeBackUnderLoader(), FALLING);
+
     servo.speed(100);
     if (isGreen()) { //Permet au laser d'être dans le trou du tourbillon au début du match
       servo.goalPositionDegree(235);
@@ -139,4 +141,11 @@ void Robot::fire() {
         attempt++;
         delay(500);
     }
+}
+
+void Robot::comeBackUnderLoader(){
+  while(!isUnderLoader()){
+    moveForward(50);
+  }
+  stop();
 }

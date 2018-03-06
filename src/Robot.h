@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   Robot.h
  * Author: elektron
  *
@@ -31,6 +31,7 @@ public:
     void stop();
     void loadBall();
     void fire();
+    void comeBackUnderLoader();
 private:
     //HardwareSerial serie;
     DynamixelInterface interface; //S'ouvre sur le port 1
@@ -38,4 +39,3 @@ private:
 };
 
 #endif /* ROBOT_H */
-
