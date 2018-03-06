@@ -3,6 +3,8 @@
 #include "Robot.h"
 #include "Afficheur.h"
 
+void comeBackUnderLoader();
+
 Zizis myPenis(2);
 Robot robot;
 Afficheur afficheur;
@@ -14,6 +16,8 @@ void setup() {
 	Serial.begin(9600);
 	Serial.println("Série OK");
 	//delay(250);
+
+	attachInterrupt(PIN_FIN_COURSE, comeBackUnderLoader, FALLING);
 
   robot.init();
 	afficheur.init();
@@ -51,4 +55,11 @@ void loop() {
         delay(500);
     }
 
+}
+
+void comeBackUnderLoader(){
+	while(!robot.isUnderLoader()){
+		robot.moveForward(50);
+	}
+	robot.stop();
 }
