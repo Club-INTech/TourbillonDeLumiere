@@ -9,6 +9,8 @@ Afficheur afficheur;
 
 bool etat=0;
 
+bool last_state = 0;
+
 //Initialisation de la Serie
 void setup() {
 	Serial.begin(9600);
@@ -23,7 +25,16 @@ void setup() {
 
 //Boucle principale
 void loop() {
-	while(Serial.available()) {
+	if(last_state != robot.isUnderLoader()) {
+		if (robot.isUnderLoader()) {
+			afficheur.display("COOL");
+		} else {
+			afficheur.display("FEU!");
+		}
+		last_state = robot.isUnderLoader();
+	}
+
+	if(Serial.available()) {
 		char x = Serial.read();
     if(x == 'r') {
 			robot.loadBall();
