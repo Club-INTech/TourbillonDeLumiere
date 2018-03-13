@@ -66,7 +66,7 @@ void Afficheur::init() {
   // Clear the display, and then turn on all segments and decimals
   clearDisplayI2C();  // Clears display, resets cursor
   setBrightnessI2C(255);  // High brightness
-  display("BITE");
+  display("TEST");
   delay(1500);
 
   // Clear the display before jumping into loop

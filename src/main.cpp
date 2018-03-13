@@ -18,37 +18,25 @@ void setup() {
   robot.init();
 	afficheur.init();
 	afficheur.setBrightnessI2C(0xFF);
-	afficheur.display("SUUS");
+	afficheur.display("TEST");
 }
 
 //Boucle principale
 void loop() {
-
-    //robot.setLedSide();
-
-    while(robot.start()) { //on attend le debut du match
-    }
-
-    while(!robot.start()) { //on attend le debut du match , front montant
-    }
-
-    while(!robot.isUnderLoader()) { //on se positionne sous le tube
-        robot.moveForward(60); //60% de sa vitesse sinon il fonce sous les balles comme un taré
-    }
-
-    robot.stop();
-
-    for(int i=0; i<8; i++) { //on lance les 8 balles
-        robot.loadBall();
-        robot.fire();
-        robot.fire();
-				afficheur.addScore(5);
-    }
-
-    while(true) { //on fait des jolis affichages
-        myPenis.spacePrint(); //impression du zizi avec des espaces devant
-        myPenis.randomise(); //changement aléatoire de type de zizi
-        delay(500);
-    }
-
+	while(Serial.available()) {
+		char x = Serial.read();
+    if(x == 'r') {
+			robot.loadBall();
+		} else if(x == 'f') {
+			robot.fire();
+		} else if(x == 'g') {
+			robot.moveForward(60);
+			delay(300);
+			robot.stop();
+		} else if(x == 'b') {
+			robot.moveForward(-60);
+			delay(300);
+			robot.stop();
+		}
+	}
 }

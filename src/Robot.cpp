@@ -83,8 +83,8 @@ bool Robot::isUnderLoader() {
 
 void Robot::moveForward(int speedPercent) {
     //fait avancer le robot en avant a une vitesse speedPercent % de sa vitesse max
-    digitalWrite(PIN_MOTEUR_DIR, HIGH);
-    int speedPwm = map(speedPercent, 0, 100, 0, 125); //on bloque au max pwm a 125 car moteur 12V alimente en 24V
+    digitalWrite(PIN_MOTEUR_DIR, speedPercent > 0);
+    int speedPwm = map(abs(speedPercent), 0, 100, 0, 125); //on bloque au max pwm a 125 car moteur 12V alimente en 24V
     analogWrite(PIN_MOTEUR_PWM, speedPwm);
 }
 
