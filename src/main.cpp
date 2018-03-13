@@ -31,12 +31,13 @@ void loop() {
 			robot.fire();
 		} else if(x == 'g') {
 			robot.moveForward(60);
-			delay(300);
+			delay(500);
 			robot.stop();
 		} else if(x == 'b') {
 			robot.moveForward(-60);
-			delay(300);
+			delay(500);
 			robot.stop();
 		}
+		Serial.flush();
 	}
 }
