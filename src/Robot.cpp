@@ -46,11 +46,11 @@ void Robot::init() {
     digitalWrite(PIN_MOTEUR_DIR, LOW);
     digitalWrite(PIN_TURBINE, LOW);
 
-    servo.speed(100);
-    if (isGreen()) { //Permet au laser d'être dans le trou du tourbillon au début du match
-      servo.goalPositionDegree(235);
+    servo.speed(200);
+    if (isGreen()) {
+      servo.goalPositionDegree(300);
     } else {
-      servo.goalPositionDegree(155);
+      servo.goalPositionDegree(100);
     }
 }
 
@@ -105,19 +105,17 @@ void Robot::loadBall() {
         angle_load = 300;
         angle_mid = 195;
     }
-    servo.speed(100);
+    servo.speed(200);
 
-    servo.goalPositionDegree(angle_load);
-    delay(1750);
-    servo.goalPositionDegree(angle_load - 5); //on bouge un peu pour bien récupérer la balle
-    delay(500);
-    servo.goalPositionDegree(angle_load);
-    delay(500);
-    servo.goalPositionDegree(angle_mid);
-    delay(1750);
+    servo.goalPositionDegree(angle_mid+10);
+    delay(1000);
     servo.goalPositionDegree(angle_mid - 10); //on bouge une peu pour bien faire tomber la balle
     delay(500);
     servo.goalPositionDegree(angle_mid);
+    delay(500);
+    servo.goalPositionDegree(angle_load);
+    delay(1750);
+    servo.goalPositionDegree(angle_load );
     delay(500);
 }
 
