@@ -3,11 +3,11 @@
 #include "Robot.h"
 #include "Afficheur.h"
 
-void comeBackUnderLoader();
-
 Zizis myPenis(2);
 Robot robot;
 Afficheur afficheur;
+
+void comeBackUnderLoader();
 
 bool etat=0;
 
@@ -17,12 +17,12 @@ void setup() {
 	Serial.println("Série OK");
 	//delay(250);
 
-	attachInterrupt(PIN_FIN_COURSE, comeBackUnderLoader, FALLING);
-
   robot.init();
 	afficheur.init();
 	afficheur.setBrightnessI2C(0xFF);
 	afficheur.display("SUUS");
+
+	attachInterrupt(digitalPinToInterrupt(PIN_FIN_COURSE), comeBackUnderLoader, FALLING);
 }
 
 //Boucle principale
@@ -32,7 +32,7 @@ void loop() {
 
     while(robot.start()) { //on attend le debut du match
     }
-
+		delay(300);
     while(!robot.start()) { //on attend le debut du match , front montant
     }
 
@@ -54,7 +54,6 @@ void loop() {
         myPenis.randomise(); //changement aléatoire de type de zizi
         delay(500);
     }
-
 }
 
 void comeBackUnderLoader(){
