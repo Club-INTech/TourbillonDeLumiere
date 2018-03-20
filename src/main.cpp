@@ -42,6 +42,7 @@ void loop() {
     }
 
     robot.stop();
+		attachInterrupt(digitalPinToInterrupt(PIN_FIN_COURSE), comeBackUnderLoader, FALLING);
 
     for(int i=0; i<8; i++) { //on lance les 8 balles
         robot.loadBall();
