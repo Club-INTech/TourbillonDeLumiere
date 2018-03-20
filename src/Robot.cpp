@@ -46,6 +46,8 @@ void Robot::init() {
     digitalWrite(PIN_MOTEUR_DIR, LOW);
     digitalWrite(PIN_TURBINE, LOW);
 
+    analogWriteFrequency(PIN_MOTEUR_PWM, 20000);
+
     servo.speed(100);
     if (isGreen()) { //Permet au laser d'être dans le trou du tourbillon au début du match
       servo.goalPositionDegree(235);
@@ -99,7 +101,7 @@ void Robot::loadBall() {
     int angle_mid = 195;
 
     if (!isGreen()) {
-        angle_load = 110;
+        angle_load = 100;
         angle_mid = 195;
     } else {
         angle_load = 300;

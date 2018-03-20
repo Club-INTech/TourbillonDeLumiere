@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   Robot.h
  * Author: elektron
  *
@@ -38,4 +38,3 @@ private:
 };
 
 #endif /* ROBOT_H */
-
