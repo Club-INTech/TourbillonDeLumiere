@@ -14,6 +14,7 @@
 #ifndef PINMAPPING_H
 #define PINMAPPING_H
 
+#define PIN_MOTEUR_BRAKE 3
 #define PIN_MOTEUR_PWM 5
 #define PIN_MOTEUR_DIR 6
 #define PIN_TURBINE 8

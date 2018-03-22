@@ -26,6 +26,7 @@ void Robot::init() {
 
     /*Declaration des sorties*/
     pinMode(PIN_MOTEUR_PWM, OUTPUT);
+    pinMode(PIN_MOTEUR_BRAKE, OUTPUT);
     pinMode(PIN_MOTEUR_DIR, OUTPUT);
     pinMode(PIN_TURBINE, OUTPUT);
 
@@ -45,6 +46,7 @@ void Robot::init() {
     digitalWrite(PIN_MOTEUR_PWM, LOW);
     digitalWrite(PIN_MOTEUR_DIR, LOW);
     digitalWrite(PIN_TURBINE, LOW);
+    digitalWrite(PIN_MOTEUR_BRAKE, LOW);
 
     analogWriteFrequency(PIN_MOTEUR_PWM, 20000);
 
@@ -85,6 +87,7 @@ bool Robot::isUnderLoader() {
 
 void Robot::moveForward(int speedPercent) {
     //fait avancer le robot en avant a une vitesse speedPercent % de sa vitesse max
+    digitalWrite(PIN_MOTEUR_BRAKE, LOW);
     digitalWrite(PIN_MOTEUR_DIR, HIGH);
     int speedPwm = map(speedPercent, 0, 100, 0, 125); //on bloque au max pwm a 125 car moteur 12V alimente en 24V
     analogWrite(PIN_MOTEUR_PWM, speedPwm);
@@ -93,6 +96,8 @@ void Robot::moveForward(int speedPercent) {
 void Robot::stop() {
     //arrête le moteur du robot
     analogWrite(PIN_MOTEUR_PWM, 0);
+    digitalWrite(PIN_MOTEUR_BRAKE, HIGH);
+    digitalWrite(PIN_MOTEUR_PWM, HIGH);
 }
 
 void Robot::loadBall() {
@@ -107,7 +112,7 @@ void Robot::loadBall() {
         angle_load = 300;
         angle_mid = 195;
     }
-    servo.speed(100);
+    servo.speed(200);
 
     servo.goalPositionDegree(angle_load);
     delay(1750);
