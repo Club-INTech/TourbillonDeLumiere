@@ -96,8 +96,15 @@ void Robot::moveForward(int speedPercent) {
 void Robot::stop() {
     //arrête le moteur du robot
     analogWrite(PIN_MOTEUR_PWM, 0);
-    digitalWrite(PIN_MOTEUR_BRAKE, HIGH);
-    digitalWrite(PIN_MOTEUR_PWM, HIGH);
+}
+
+void Robot::brake() {
+  digitalWrite(PIN_MOTEUR_BRAKE, HIGH);
+  digitalWrite(PIN_MOTEUR_PWM, HIGH);
+}
+
+void Robot::release() {
+  digitalWrite(PIN_MOTEUR_BRAKE, LOW);
 }
 
 void Robot::loadBall() {

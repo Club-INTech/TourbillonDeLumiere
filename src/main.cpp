@@ -31,10 +31,11 @@ void loop() {
     while(robot.start()) { //on attend le debut du match
     }
 
-		delay(300);
+		delay(300); //pour eviter les rebonds du jumper
 
     while(!robot.start()) { //on attend le debut du match , front montant
     }
+
 		attachInterrupt(digitalPinToInterrupt(PIN_FIN_COURSE), comeBackUnderLoader, FALLING);
 
     while(!robot.isUnderLoader()) { //on se positionne sous le tube
@@ -42,10 +43,11 @@ void loop() {
     }
 
     robot.stop();
-		attachInterrupt(digitalPinToInterrupt(PIN_FIN_COURSE), comeBackUnderLoader, FALLING);
 
     for(int i=0; i<8; i++) { //on lance les 8 balles
+				robot.brake();
         robot.loadBall();
+				robot.release();
         robot.fire();
         robot.fire();
 				afficheur.addScore(5);
