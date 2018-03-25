@@ -112,7 +112,7 @@ void Robot::loadBall() {
     delay(500);
     servo.goalPositionDegree(angle_load);
     delay(500);
-    servo.goalPositionDegree(ANGLE_AX12_MID;
+    servo.goalPositionDegree(ANGLE_AX12_MID);
     delay(1750);
     servo.goalPositionDegree(ANGLE_AX12_MID - 10); //on bouge une peu pour bien faire tomber la balle
     delay(500);
