@@ -107,17 +107,17 @@ void Robot::loadBall() {
     servo.speed(SERVO_SPEED);
 
     servo.goalPositionDegree(angle_load);
-    delay(1750);
+    delay(TIME_TO_MOVE_AX12);
     servo.goalPositionDegree(angle_load - 5); //on bouge un peu pour bien récupérer la balle
-    delay(500);
+    delay(TIME_TO_MOVE_AX12/3);
     servo.goalPositionDegree(angle_load);
-    delay(500);
+    delay(TIME_TO_MOVE_AX12/3);
     servo.goalPositionDegree(ANGLE_AX12_MID);
-    delay(1750);
+    delay(TIME_TO_MOVE_AX12);
     servo.goalPositionDegree(ANGLE_AX12_MID - 10); //on bouge une peu pour bien faire tomber la balle
-    delay(500);
+    delay(TIME_TO_MOVE_AX12/3);
     servo.goalPositionDegree(ANGLE_AX12_MID);
-    delay(500);
+    delay(TIME_TO_MOVE_AX12/3);
 }
 
 void Robot::fire() {
