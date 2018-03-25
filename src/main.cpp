@@ -43,6 +43,7 @@ void loop() {
     }
 
     robot.stop();
+    afficheur.addScore(10);
 
     for(int i=0; i<8; i++) { //on lance les 8 balles
         robot.loadBall();

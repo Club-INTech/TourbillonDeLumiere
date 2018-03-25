@@ -80,7 +80,7 @@ void Afficheur::addScore(int value) {
 }
 
 void Afficheur::constrainScore(){
-  if(score > 40 ){
-    score = 40;
+  if(score > 50 ){
+    score = 50;
   }
 }
