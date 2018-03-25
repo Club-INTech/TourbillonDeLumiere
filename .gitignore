@@ -5,3 +5,4 @@
 *.yml
 ./cmake-build-debug/*
 ./nbproject/*
+CMakeListsPrivate.txt

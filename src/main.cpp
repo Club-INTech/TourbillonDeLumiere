@@ -31,12 +31,12 @@ void loop() {
     while(robot.start()) { //on attend le debut du match
     }
 
-		delay(300); //pour eviter les rebonds du jumper
+    delay(300); //pour eviter les rebonds du jumper
 
     while(!robot.start()) { //on attend le debut du match , front montant
     }
 
-		attachInterrupt(digitalPinToInterrupt(PIN_FIN_COURSE), comeBackUnderLoader, FALLING);
+    attachInterrupt(digitalPinToInterrupt(PIN_FIN_COURSE), comeBackUnderLoader, FALLING);
 
     while(!robot.isUnderLoader()) { //on se positionne sous le tube
         robot.moveForward(60); //60% de sa vitesse sinon il fonce sous les balles comme un taré
@@ -45,9 +45,7 @@ void loop() {
     robot.stop();
 
     for(int i=0; i<8; i++) { //on lance les 8 balles
-				robot.brake();
         robot.loadBall();
-				robot.release();
         robot.fire();
         robot.fire();
 				afficheur.addScore(5);

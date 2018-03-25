@@ -1,21 +1,18 @@
-/home/trotfunky/Logiciels/clion-2017.2.3/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/home/trotfunky/Programmation/Projets/Tests CLion/Teensy Template"
-CMake Error: Could not find cmake module file: CMakeDetermineTemplateCompiler.cmake
-CMake Error: Error required internal CMake variable not set, cmake may not be built correctly.
-Missing variable is:
-CMAKE_Template_COMPILER_ENV_VAR
-CMake Error: Error required internal CMake variable not set, cmake may not be built correctly.
-Missing variable is:
-CMAKE_Template_COMPILER
-CMake Error: Could not find cmake module file: /home/trotfunky/Programmation/Projets/Tests CLion/Teensy Template/cmake-build-debug/CMakeFiles/3.8.2/CMakeTemplateCompiler.cmake
-CMake Error at CMakeLists.txt:2 (project):
-  No CMAKE_Template_COMPILER could be found.
-
-  Tell CMake where to find the compiler by setting the CMake cache entry
-  CMAKE_Template_COMPILER to the full path to the compiler, or to the
-  compiler name if it is in the PATH.
-
-
-CMake Error: Could not find cmake module file: CMakeTemplateInformation.cmake
-CMake Error: CMAKE_Template_COMPILER not set, after EnableLanguage
--- Configuring incomplete, errors occurred!
-See also "/home/trotfunky/Programmation/Projets/Tests CLion/Teensy Template/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+/opt/JetBrains/apps/CLion/ch-0/173.4674.29/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/elektron/Documents/INTech/TourbillonDeLumiere
+-- The C compiler identification is GNU 7.3.1
+-- The CXX compiler identification is GNU 7.3.1
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/elektron/Documents/INTech/TourbillonDeLumiere/cmake-build-debug
