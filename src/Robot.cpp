@@ -46,13 +46,13 @@ void Robot::init() {
     digitalWrite(PIN_MOTEUR_DIR, LOW);
     digitalWrite(PIN_TURBINE, LOW);
 
-    analogWriteFrequency(PIN_MOTEUR_PWM, 20000);
+    analogWriteFrequency(PIN_MOTEUR_PWM, PWM_FREQUENCY);
 
-    servo.speed(100);
-    if (isGreen()) { //Permet au laser d'être dans le trou du tourbillon au début du match
-      servo.goalPositionDegree(235);
+    servo.speed(SERVO_SPEED);
+    if (isGreen()) {
+      servo.goalPositionDegree(ANGLE_AX12_VERT);
     } else {
-      servo.goalPositionDegree(155);
+      servo.goalPositionDegree(ANGLE_AX12_ORANGE);
     }
 }
 
@@ -97,17 +97,14 @@ void Robot::stop() {
 
 void Robot::loadBall() {
     //permet de charger une balle dans le canon
-    int angle_load = 100;
-    int angle_mid = 195;
+    int angle_load;
 
-    if (!isGreen()) {
-        angle_load = 100;
-        angle_mid = 195;
+    if (isGreen()) {
+        angle_load = ANGLE_AX12_VERT;
     } else {
-        angle_load = 300;
-        angle_mid = 195;
+        angle_load = ANGLE_AX12_ORANGE;
     }
-    servo.speed(200);
+    servo.speed(SERVO_SPEED);
 
     servo.goalPositionDegree(angle_load);
     delay(1750);
@@ -115,22 +112,21 @@ void Robot::loadBall() {
     delay(500);
     servo.goalPositionDegree(angle_load);
     delay(500);
-    servo.goalPositionDegree(angle_mid);
+    servo.goalPositionDegree(ANGLE_AX12_MID;
     delay(1750);
-    servo.goalPositionDegree(angle_mid - 10); //on bouge une peu pour bien faire tomber la balle
+    servo.goalPositionDegree(ANGLE_AX12_MID - 10); //on bouge une peu pour bien faire tomber la balle
     delay(500);
-    servo.goalPositionDegree(angle_mid);
+    servo.goalPositionDegree(ANGLE_AX12_MID);
     delay(500);
 }
 
 void Robot::fire() {
     //permet d'allumer la turbine, en vérifiant qu'une balle est partie grâce au laser
-    #define TENTATIVE_MAX 1
     int attempt = 0; //nb de tentatives
     bool isFired = 0; //variable qui indique si la balle est partie
     long lastMillis = millis();
     while (!isFired && attempt < TENTATIVE_MAX) { //tant que la balle n'est pas partie ou qu'on n'a pas fait 4 tentatives
-        analogWrite(PIN_TURBINE, 200);
+        analogWrite(PIN_TURBINE, PWM_TURBINE);
         lastMillis = millis();
         while(millis() - lastMillis < 500) { //on attend 500ms en verifiant si la balle est partie
             if (digitalRead(PIN_LASER ) == LOW) {
@@ -139,6 +135,6 @@ void Robot::fire() {
         }
         analogWrite(PIN_TURBINE, 0);
         attempt++;
-        delay(500);
+        delay(100);
     }
 }

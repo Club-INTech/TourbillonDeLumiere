@@ -18,6 +18,7 @@
 #include <Actuators/DynamixelInterface.h>
 #include <Actuators/DynamixelMotor.h>
 #include <pinMapping.h>
+#include <defines.h>
 
 class Robot {
 public:

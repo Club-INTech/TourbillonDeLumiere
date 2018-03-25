@@ -39,7 +39,7 @@ void loop() {
     attachInterrupt(digitalPinToInterrupt(PIN_FIN_COURSE), comeBackUnderLoader, FALLING);
 
     while(!robot.isUnderLoader()) { //on se positionne sous le tube
-        robot.moveForward(60); //60% de sa vitesse sinon il fonce sous les balles comme un taré
+        robot.moveForward(PERCENT_MOTOR); //% de sa vitesse sinon il fonce sous les balles comme un taré
     }
 
     robot.stop();
@@ -48,7 +48,7 @@ void loop() {
         robot.loadBall();
         robot.fire();
         robot.fire();
-				afficheur.addScore(5);
+        afficheur.addScore(5);
     }
 
     while(true) { //on fait des jolis affichages
@@ -60,7 +60,7 @@ void loop() {
 
 void comeBackUnderLoader(){
 	while(!robot.isUnderLoader()){
-		robot.moveForward(50);
+		robot.moveForward(PERCENT_MOTOR);
 	}
 	robot.stop();
 }
