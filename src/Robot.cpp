@@ -93,7 +93,7 @@ void Robot::moveForward(int speedPercent) {
 void Robot::moveBackward(int speedPercent) {
     //fait reculer le robot pour le recaler au laser
     digitalWrite(PIN_MOTEUR_DIR,LOW);
-    int speedPwm = map(speedPercent, -100,0, 0, 125); //on bloque au max pwm a 125 car moteur 12V alimente en 24V
+    int speedPwm = map(speedPercent,0,100, 0, 125); //on bloque au max pwm a 125 car moteur 12V alimente en 24V
     analogWrite(PIN_MOTEUR_PWM, speedPwm);
 }
 
