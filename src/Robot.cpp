@@ -50,9 +50,11 @@ void Robot::init() {
 
     servo.speed(SERVO_SPEED);
     if (isGreen()) {
-      servo.goalPositionDegree(ANGLE_AX12_VERT);
+        servo.goalPositionDegree(ANGLE_AX12_VERT);
+        currentAngle = ANGLE_AX12_VERT;
     } else {
-      servo.goalPositionDegree(ANGLE_AX12_ORANGE);
+        servo.goalPositionDegree(ANGLE_AX12_ORANGE);
+        currentAngle = ANGLE_AX12_ORANGE;
     }
 }
 
@@ -111,9 +113,18 @@ void Robot::loadBall() {
     } else {
         angle_load = ANGLE_AX12_ORANGE;
     }
-    servo.speed(SERVO_SPEED);
 
-    servo.goalPositionDegree(angle_load);
+    //servo.speed(SERVO_SPEED);
+
+    setAngleAndWait(angle_load);
+    setAngleAndWait(angle_load-10);
+    setAngleAndWait(angle_load);
+
+    setAngleAndWait(ANGLE_AX12_MID);
+    setAngleAndWait(ANGLE_AX12_MID - 10);
+    setAngleAndWait(ANGLE_AX12_MID);
+
+    /*servo.goalPositionDegree(angle_load);
     delay(TIME_TO_MOVE_AX12);
     servo.goalPositionDegree(angle_load - 5); //on bouge un peu pour bien récupérer la balle
     delay(TIME_TO_MOVE_AX12/3);
@@ -124,7 +135,7 @@ void Robot::loadBall() {
     servo.goalPositionDegree(ANGLE_AX12_MID - 10); //on bouge une peu pour bien faire tomber la balle
     delay(TIME_TO_MOVE_AX12/3);
     servo.goalPositionDegree(ANGLE_AX12_MID);
-    delay(TIME_TO_MOVE_AX12/3);
+    delay(TIME_TO_MOVE_AX12/3);*/
 }
 
 void Robot::fire() {
@@ -142,6 +153,15 @@ void Robot::fire() {
         }
         analogWrite(PIN_TURBINE, 0);
         attempt++;
-        delay(100);
+        delay(300);
     }
+}
+
+void Robot::setAngleAndWait(uint16_t angle) {
+    servo.speed(SERVO_SPEED);
+    servo.goalPositionDegree(angle);
+    uint32_t timeToMove = (uint32_t)(2200*abs(currentAngle - angle))/SERVO_SPEED;
+    Serial.println(timeToMove);
+    delay(timeToMove); //valeur a ajuster
+    currentAngle = angle;
 }

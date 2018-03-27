@@ -17,7 +17,7 @@ void setup() {
 	Serial.println("Série OK");
 	//delay(250);
 
-  robot.init();
+  	robot.init();
 	afficheur.init();
 	afficheur.setBrightnessI2C(0xFF);
 	afficheur.display("SUUS");
@@ -28,7 +28,7 @@ void loop() {
 
     //robot.setLedSide();
 
-    while(robot.start()) { //on attend le debut du match
+    /*while(robot.start()) { //on attend le debut du match
     }
 
     delay(300); //pour eviter les rebonds du jumper
@@ -49,7 +49,8 @@ void loop() {
         robot.loadBall();
         robot.fire();
         robot.fire();
-        robot.moveBackward(PERCENT_MOTOR);
+        robot.moveBackward(PERCENT_MOTOR_BACK);
+        delay(800);
         afficheur.addScore(5);
     }
 
@@ -57,7 +58,12 @@ void loop() {
         myPenis.spacePrint(); //impression du zizi avec des espaces devant
         myPenis.randomise(); //changement aléatoire de type de zizi
         delay(500);
-    }
+    }*/
+
+	robot.loadBall();
+    robot.fire();
+	robot.loadBall();
+    robot.fire();
 }
 
 void comeBackUnderLoader(){

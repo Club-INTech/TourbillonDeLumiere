@@ -33,6 +33,8 @@ public:
     void stop();
     void loadBall();
     void fire();
+    void setAngleAndWait(uint16_t angle);
+    uint16_t currentAngle;
 private:
     //HardwareSerial serie;
     DynamixelInterface interface; //S'ouvre sur le port 1
