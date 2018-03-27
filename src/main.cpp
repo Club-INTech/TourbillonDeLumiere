@@ -28,7 +28,7 @@ void loop() {
 
     //robot.setLedSide();
 
-    /*while(robot.start()) { //on attend le debut du match
+    while(robot.start()) { //on attend le debut du match
     }
 
     delay(300); //pour eviter les rebonds du jumper
@@ -58,12 +58,7 @@ void loop() {
         myPenis.spacePrint(); //impression du zizi avec des espaces devant
         myPenis.randomise(); //changement aléatoire de type de zizi
         delay(500);
-    }*/
-
-	robot.loadBall();
-    robot.fire();
-	robot.loadBall();
-    robot.fire();
+    }
 }
 
 void comeBackUnderLoader(){

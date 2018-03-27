@@ -3,8 +3,7 @@
 .gcc-flags.json
 .piolibdeps
 *.yml
-./cmake-build-debug/*
+cmake-build-debug/*
 ./nbproject/*
 CMakeListsPrivate.txt
-./idea
-./cmake-build-debug
+.idea/*

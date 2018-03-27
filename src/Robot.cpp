@@ -113,9 +113,7 @@ void Robot::loadBall() {
     } else {
         angle_load = ANGLE_AX12_ORANGE;
     }
-
-    //servo.speed(SERVO_SPEED);
-
+    
     setAngleAndWait(angle_load);
     setAngleAndWait(angle_load-10);
     setAngleAndWait(angle_load);
@@ -123,19 +121,6 @@ void Robot::loadBall() {
     setAngleAndWait(ANGLE_AX12_MID);
     setAngleAndWait(ANGLE_AX12_MID - 10);
     setAngleAndWait(ANGLE_AX12_MID);
-
-    /*servo.goalPositionDegree(angle_load);
-    delay(TIME_TO_MOVE_AX12);
-    servo.goalPositionDegree(angle_load - 5); //on bouge un peu pour bien récupérer la balle
-    delay(TIME_TO_MOVE_AX12/3);
-    servo.goalPositionDegree(angle_load);
-    delay(TIME_TO_MOVE_AX12/3);
-    servo.goalPositionDegree(ANGLE_AX12_MID);
-    delay(TIME_TO_MOVE_AX12);
-    servo.goalPositionDegree(ANGLE_AX12_MID - 10); //on bouge une peu pour bien faire tomber la balle
-    delay(TIME_TO_MOVE_AX12/3);
-    servo.goalPositionDegree(ANGLE_AX12_MID);
-    delay(TIME_TO_MOVE_AX12/3);*/
 }
 
 void Robot::fire() {
