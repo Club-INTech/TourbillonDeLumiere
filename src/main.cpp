@@ -49,6 +49,9 @@ void loop() {
         robot.loadBall();
         robot.fire();
         robot.fire();
+        while(robot.isUnderLoader()){
+            robot.moveBackward(PERCENT_MOTOR);
+        }
         afficheur.addScore(5);
     }
 

@@ -29,6 +29,7 @@ public:
     bool start();
     bool isUnderLoader();
     void moveForward(int speedPercent);
+    void moveBackward(int speedPercent);
     void stop();
     void loadBall();
     void fire();
