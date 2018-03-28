@@ -44,11 +44,9 @@ void loop() {
 
     robot.stop();
     afficheur.addScore(10);
-
     for(int i=0; i<8; i++) { //on lance les 8 balles
         robot.loadBall();
         robot.fire();
-        delay(1000);
         robot.fire();
         robot.moveBackward(PERCENT_MOTOR_BACK);
         delay(2000);
@@ -64,7 +62,7 @@ void loop() {
 
 void comeBackUnderLoader(){
 	while(!robot.isUnderLoader()){
-		robot.moveForward(PERCENT_MOTOR);
+		robot.moveForward(PERCENT_MOTOR_COME_BACK);
 	}
 	robot.stop();
 }

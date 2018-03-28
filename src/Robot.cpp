@@ -138,7 +138,7 @@ void Robot::fire() {
         }
         analogWrite(PIN_TURBINE, 0);
         attempt++;
-        delay(300);
+        delay(1000);
     }
 }
 
