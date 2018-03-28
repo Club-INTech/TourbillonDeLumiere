@@ -34,6 +34,7 @@ public:
     void loadBall();
     void fire();
     void setAngleAndWait(uint16_t angle);
+    void tiltAX12();
     bool hasFiredBall;
     bool hasBallLoaded;
 private:

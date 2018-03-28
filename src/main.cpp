@@ -72,6 +72,7 @@ void changeFired(){
         robot.hasBallLoaded = true;
     } else {    //front decendant
         robot.hasFiredBall = true;
+        robot.hasBallLoaded = false;
     }
 }
 

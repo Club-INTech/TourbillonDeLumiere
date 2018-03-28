@@ -123,10 +123,18 @@ void Robot::loadBall() {
     setAngleAndWait(ANGLE_AX12_MID);
 }
 
+void Robot::tiltAX12(){
+    setAngleAndWait(uint16_t(currentAngle + 10));
+    setAngleAndWait(uint16_t(currentAngle - 10));
+}
+
 void Robot::fire() {
     //permet d'allumer la turbine, en vérifiant qu'une balle est partie grâce au laser
     int attempt = 0; //nb de tentatives reellement faites
     hasFiredBall = false;
+    while (!hasBallLoaded){
+        tiltAX12();
+    }
     while (!hasFiredBall && attempt < TENTATIVE_MAX) { //tant que la balle n'est pas partie ou qu'on n'a pas fait 4 tentatives
         analogWrite(PIN_TURBINE, PWM_TURBINE);
         delay(500);
