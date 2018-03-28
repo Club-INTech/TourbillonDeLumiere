@@ -106,7 +106,7 @@ void Robot::stop() {
 
 void Robot::loadBall() {
     //permet de charger une balle dans le canon
-    int angle_load;
+    uint16_t angle_load;
 
     if (isGreen()) {
         angle_load = ANGLE_AX12_VERT;
@@ -125,21 +125,16 @@ void Robot::loadBall() {
 
 void Robot::fire() {
     //permet d'allumer la turbine, en vérifiant qu'une balle est partie grâce au laser
-    int attempt = 0; //nb de tentatives
-    bool isFired = 0; //variable qui indique si la balle est partie
-    long lastMillis = millis();
-    while (!isFired && attempt < TENTATIVE_MAX) { //tant que la balle n'est pas partie ou qu'on n'a pas fait 4 tentatives
+    int attempt = 0; //nb de tentatives reellement faites
+    hasFiredBall = false;
+    while (!hasFiredBall && attempt < TENTATIVE_MAX) { //tant que la balle n'est pas partie ou qu'on n'a pas fait 4 tentatives
         analogWrite(PIN_TURBINE, PWM_TURBINE);
-        lastMillis = millis();
-        while(millis() - lastMillis < 500) { //on attend 500ms en verifiant si la balle est partie
-            if (digitalRead(PIN_LASER ) == LOW) {
-                isFired = 1;
-            }
-        }
+        delay(500);
         analogWrite(PIN_TURBINE, 0);
         attempt++;
         delay(1000);
     }
+    delay(1000);
 }
 
 void Robot::setAngleAndWait(uint16_t angle) {

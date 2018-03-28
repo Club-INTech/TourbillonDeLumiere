@@ -34,11 +34,14 @@ public:
     void loadBall();
     void fire();
     void setAngleAndWait(uint16_t angle);
-    uint16_t currentAngle;
+    bool hasFiredBall;
+    bool hasBallLoaded;
 private:
     //HardwareSerial serie;
     DynamixelInterface interface; //S'ouvre sur le port 1
     DynamixelMotor servo; //Ouvre une communication avec tout les AX12 - Remplacer 254 par l'ID
+    uint16_t currentAngle;
+
 };
 
 #endif /* ROBOT_H */
