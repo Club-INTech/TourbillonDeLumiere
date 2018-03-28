@@ -13,7 +13,6 @@
 
 #include <Robot.h>
 
-
 Robot::Robot() : interface(Serial2), servo(interface, 254) {
 }
 
@@ -23,6 +22,10 @@ void Robot::init() {
     servo.init();			//Initialise le moteur
     servo.enableTorque();	//Et active le couple
     servo.jointMode();
+
+    afficheur.init();
+    afficheur.setBrightnessI2C(0xFF);
+    afficheur.display("SUUS");
 
     /*Declaration des sorties*/
     pinMode(PIN_MOTEUR_PWM, OUTPUT);
@@ -152,4 +155,13 @@ void Robot::setAngleAndWait(uint16_t angle) {
     Serial.println(timeToMove);
     delay(timeToMove); //valeur a ajuster
     currentAngle = angle;
+}
+
+int Robot::getScore() {
+    return score;
+}
+
+void Robot::addScore(int scoreToAdd){
+    score += scoreToAdd;
+    afficheur.displayInt(score);
 }

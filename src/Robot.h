@@ -19,6 +19,7 @@
 #include <Actuators/DynamixelMotor.h>
 #include <pinMapping.h>
 #include <defines.h>
+#include "Afficheur.h"
 
 class Robot {
 public:
@@ -37,12 +38,15 @@ public:
     void tiltAX12();
     bool hasFiredBall;
     bool hasBallLoaded;
+    void addScore(int scoreToAdd);
+    int getScore();
 private:
     //HardwareSerial serie;
     DynamixelInterface interface; //S'ouvre sur le port 1
     DynamixelMotor servo; //Ouvre une communication avec tout les AX12 - Remplacer 254 par l'ID
+    Afficheur afficheur;
     uint16_t currentAngle;
-
+    int score = 0;
 };
 
 #endif /* ROBOT_H */

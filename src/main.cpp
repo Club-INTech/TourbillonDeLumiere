@@ -1,11 +1,9 @@
 #include <Arduino.h>
 #include "Zizis.h"
 #include "Robot.h"
-#include "Afficheur.h"
 
 Zizis myPenis(2);
 Robot robot;
-Afficheur afficheur;
 
 void comeBackUnderLoader();
 void checkLoadedFired();
@@ -19,9 +17,6 @@ void setup() {
 	//delay(250);
 
   	robot.init();
-	afficheur.init();
-	afficheur.setBrightnessI2C(0xFF);
-	afficheur.display("SUUS");
 }
 
 //Boucle principale
@@ -45,12 +40,13 @@ void loop() {
     }
 
     robot.stop();
-    afficheur.addScore(10);
-    for(int i=0; i<8; i++) { //on lance les 8 balles
+    robot.addScore(10);
+
+    while (robot.getScore() < 50 ){ //on lance les 8 balles
         robot.loadBall();
         robot.fire();
         robot.moveBackward(PERCENT_MOTOR_BACK);
-        afficheur.addScore(5);
+        robot.addScore(5);
     }
 
     while(true) { //on fait des jolis affichages
