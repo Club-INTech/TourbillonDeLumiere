@@ -8,7 +8,7 @@ Robot robot;
 Afficheur afficheur;
 
 void comeBackUnderLoader();
-void changeFired();
+void checkLoadedFired();
 
 bool etat=0;
 
@@ -38,7 +38,7 @@ void loop() {
     }
 
     attachInterrupt(digitalPinToInterrupt(PIN_FIN_COURSE), comeBackUnderLoader, FALLING);
-    attachInterrupt(digitalPinToInterrupt(PIN_LASER), changeFired, CHANGE);
+    attachInterrupt(digitalPinToInterrupt(PIN_LASER), checkLoadedFired, CHANGE);
 
     while(!robot.isUnderLoader()) { //on se positionne sous le tube
         robot.moveForward(PERCENT_MOTOR); //% de sa vitesse sinon il fonce sous les balles comme un taré
@@ -67,15 +67,11 @@ void comeBackUnderLoader(){
 	robot.stop();
 }
 
-void changeFired(){
+void checkLoadedFired(){
     if (digitalRead(PIN_LASER)) { //front montant
         robot.hasBallLoaded = true;
     } else {    //front decendant
         robot.hasFiredBall = true;
         robot.hasBallLoaded = false;
     }
-}
-
-void setLoaded(){
-
 }
