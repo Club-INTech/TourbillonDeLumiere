@@ -48,9 +48,10 @@ void loop() {
     for(int i=0; i<8; i++) { //on lance les 8 balles
         robot.loadBall();
         robot.fire();
+        delay(1000);
         robot.fire();
         robot.moveBackward(PERCENT_MOTOR_BACK);
-        delay(800);
+        delay(2000);
         afficheur.addScore(5);
     }
 
