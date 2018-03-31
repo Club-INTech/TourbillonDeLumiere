@@ -135,16 +135,18 @@ void Robot::tiltAX12(){
 
 void Robot::fire() {
     //permet d'allumer la turbine, en vérifiant qu'une balle est partie grâce au laser
-    int attempt = 0; //nb de tentatives reellement faites
-    hasFiredBall = false;
-    while (!hasBallLoaded){
+    int attempt_turbine = 0; //nb de tentatives reellement faites
+    int attempt_tilt = 0;
+    hasFiredBall = false; //on remet a zero la variable utilisee par l'interruption
+    while (!hasBallLoaded && attempt_tilt < TENTATIVE_TILT_MAX){
         tiltAX12();
+        attempt_tilt++;
     }
-    while (!hasFiredBall && attempt < TENTATIVE_MAX) { //tant que la balle n'est pas partie ou qu'on n'a pas fait 4 tentatives
+    while (!hasFiredBall && attempt_turbine < TENTATIVE_MAX) { //tant que la balle n'est pas partie ou qu'on n'a pas fait 4 tentatives
         analogWrite(PIN_TURBINE, PWM_TURBINE);
         delay(500);
         analogWrite(PIN_TURBINE, 0);
-        attempt++;
+        attempt_turbine++;
         delay(1000);
     }
 }
