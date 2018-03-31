@@ -39,6 +39,6 @@ void Zizis::changeType(int index) {
     }
 }
 
-void Zizis::randomise() {
+void Zizis::randomize() {
     changeType(random(1,4));
 }

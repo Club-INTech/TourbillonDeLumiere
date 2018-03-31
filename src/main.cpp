@@ -51,7 +51,7 @@ void loop() {
 
     while(true) { //on fait des jolis affichages
         myPenis.spacePrint(); //impression du zizi avec des espaces devant
-        myPenis.randomise(); //changement aléatoire de type de zizi
+        myPenis.randomize(); //changement aléatoire de type de zizi
         delay(500);
     }
 }

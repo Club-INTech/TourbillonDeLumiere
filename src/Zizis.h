@@ -22,7 +22,7 @@ public:
     Zizis(int index);
     void print();
     void changeType(int index);
-    void randomise();
+    void randomize();
     void spacePrint();
 private:
     char** monZizi;
