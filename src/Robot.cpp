@@ -127,9 +127,12 @@ void Robot::loadBall() {
 }
 
 void Robot::tiltAX12(){
-    setAngleAndWait(uint16_t(currentAngle + 10));
-    setAngleAndWait(uint16_t(currentAngle - 20));
-    setAngleAndWait(uint16_t(currentAngle + 10));
+    int sign = isGreen() ? -1 : 1;
+    setAngleAndWait(uint16_t(currentAngle + (10*sign)));
+    setAngleAndWait(uint16_t(currentAngle - (10*sign)));
+    delay(100);
+    setAngleAndWait(uint16_t(currentAngle - (10*sign)));
+    setAngleAndWait(uint16_t(currentAngle + (10*sign)));
 }
 
 void Robot::fire() {
