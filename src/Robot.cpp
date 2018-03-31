@@ -118,12 +118,10 @@ void Robot::loadBall() {
     }
     
     setAngleAndWait(angle_load);
-    setAngleAndWait(angle_load-10);
-    setAngleAndWait(angle_load);
+    tiltAX12();
 
     setAngleAndWait(ANGLE_AX12_MID);
-    setAngleAndWait(ANGLE_AX12_MID - 10);
-    setAngleAndWait(ANGLE_AX12_MID);
+    tiltAX12();
 }
 
 void Robot::tiltAX12(){
