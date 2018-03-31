@@ -74,7 +74,7 @@ void Robot::setLedSide() {
 
 bool Robot::isGreen() {
     //permet de faire la selection du côté
-    Serial.println(digitalRead(PIN_SELECT_SIDE) ? "I AM ORANGE" : "I AM GREEN");
+    //Serial.println(digitalRead(PIN_SELECT_SIDE) ? "I AM ORANGE" : "I AM GREEN");
     return !digitalRead(PIN_SELECT_SIDE);
 }
 
@@ -135,13 +135,19 @@ void Robot::tiltAX12(){
 
 void Robot::fire() {
     //permet d'allumer la turbine, en vérifiant qu'une balle est partie grâce au laser
-    int attempt_turbine = 0; //nb de tentatives reellement faites
     int attempt_tilt = 0;
-    hasFiredBall = false; //on remet a zero la variable utilisee par l'interruption
-    while (!hasBallLoaded && attempt_tilt < TENTATIVE_TILT_MAX){
-        tiltAX12();
-        attempt_tilt++;
+    while (!hasBallLoaded){
+        if (attempt_tilt < TENTATIVE_TILT_MAX) {
+            tiltAX12();
+            attempt_tilt++;
+        } else {
+            attempt_tilt = 0;
+            moveBackward(PERCENT_MOTOR_COME_BACK);
+            loadBall();
+        }
     }
+    int attempt_turbine = 0; //nb de tentatives reellement faites
+    hasFiredBall = false; //on remet a zero la variable utilisee par l'interruption
     while (!hasFiredBall && attempt_turbine < TENTATIVE_MAX) { //tant que la balle n'est pas partie ou qu'on n'a pas fait 4 tentatives
         analogWrite(PIN_TURBINE, PWM_TURBINE);
         delay(500);
@@ -155,7 +161,6 @@ void Robot::setAngleAndWait(uint16_t angle) {
     servo.speed(SERVO_SPEED);
     servo.goalPositionDegree(angle);
     uint32_t timeToMove = (uint32_t)(2200*abs(currentAngle - angle))/SERVO_SPEED;
-    Serial.println(timeToMove);
     delay(timeToMove); //valeur a ajuster
     currentAngle = angle;
 }
