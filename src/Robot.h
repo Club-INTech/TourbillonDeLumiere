@@ -6,7 +6,7 @@
 
 /*
  * File:   Robot.h
- * Author: elektron
+ * Author: elektron (Lucas Molia)
  *
  * Created on 26 novembre 2017, 11:19
  */
@@ -18,7 +18,7 @@
 #include <Actuators/DynamixelInterface.h>
 #include <Actuators/DynamixelMotor.h>
 #include <pinMapping.h>
-#include <defines.h>
+#include <constexpr.h>
 #include "Afficheur.h"
 
 class Robot {

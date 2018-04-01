@@ -6,7 +6,7 @@
 
 /*
  * File:   Robot.cpp
- * Author: elektron
+ * Author: elektron (Lucas Molia)
  *
  * Created on 26 novembre 2017, 11:19
  */

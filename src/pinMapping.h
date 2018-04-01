@@ -6,7 +6,7 @@
 
 /*
  * File:   pinMapping.h
- * Author: elektron
+ * Author: elektron (Lucas Molia)
  *
  * Created on 26 novembre 2017, 12:00
  */
