@@ -4,9 +4,11 @@
 
 Zizis myPenis(2);
 Robot robot;
+IntervalTimer timer;
 
 void comeBackUnderLoader();
 void checkLoadedFired();
+void stopMatch();
 
 bool etat=0;
 
@@ -34,6 +36,7 @@ void loop() {
 
     attachInterrupt(digitalPinToInterrupt(PIN_FIN_COURSE), comeBackUnderLoader, FALLING);
     attachInterrupt(digitalPinToInterrupt(PIN_LASER), checkLoadedFired, CHANGE);
+    timer.begin(stopMatch, 100000000);
 
     while(!robot.isUnderLoader()) { //on se positionne sous le tube
         robot.moveForward(PERCENT_MOTOR); //% de sa vitesse sinon il fonce sous les balles comme un taré
@@ -69,5 +72,13 @@ void checkLoadedFired(){
     } else {    //front decendant
         robot.hasFiredBall = true;
         robot.hasBallLoaded = false;
+    }
+}
+
+void stopMatch() {
+    while(true) { //on fait des jolis affichages
+        myPenis.spacePrint(); //impression du zizi avec des espaces devant
+        myPenis.randomize(); //changement aléatoire de type de zizi
+        delay(500);
     }
 }
