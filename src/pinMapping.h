@@ -22,7 +22,4 @@
 #define PIN_JUMPER 12
 #define PIN_FIN_COURSE 14
 
-#define PIN_LED_GREEN 667
-#define PIN_LED_RED 668
-
 #endif /* PINMAPPING_H */

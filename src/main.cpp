@@ -10,21 +10,16 @@ void comeBackUnderLoader();
 void checkLoadedFired();
 void stopMatch();
 
-bool etat=0;
-
 //Initialisation de la Serie
 void setup() {
 	Serial.begin(9600);
 	Serial.println("Série OK");
-	//delay(250);
 
   	robot.init();
 }
 
 //Boucle principale
 void loop() {
-
-    //robot.setLedSide();
 
     while(robot.start()) { //on attend le debut du match
     }
@@ -52,11 +47,7 @@ void loop() {
         robot.addScore(5);
     }
 
-    while(true) { //on fait des jolis affichages
-        myPenis.spacePrint(); //impression du zizi avec des espaces devant
-        myPenis.randomize(); //changement aléatoire de type de zizi
-        delay(500);
-    }
+    stopMatch();
 }
 
 void comeBackUnderLoader(){

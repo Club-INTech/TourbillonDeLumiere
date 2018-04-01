@@ -61,17 +61,6 @@ void Robot::init() {
     }
 }
 
-void Robot::setLedSide() {
-    //allume des leds de couleurs pour la sélection du côté (vert ou orange)
-    if (isGreen()) {
-        digitalWrite(PIN_LED_GREEN, HIGH);
-        digitalWrite(PIN_LED_RED, LOW);
-    } else {
-        digitalWrite(PIN_LED_GREEN, LOW);
-        digitalWrite(PIN_LED_RED, HIGH);
-    }
-}
-
 bool Robot::isGreen() {
     //permet de faire la selection du côté
     //Serial.println(digitalRead(PIN_SELECT_SIDE) ? "I AM ORANGE" : "I AM GREEN");

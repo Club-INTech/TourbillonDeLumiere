@@ -25,7 +25,6 @@ class Robot {
 public:
     Robot();
     void init();
-    void setLedSide();
     bool isGreen();
     bool start();
     bool isUnderLoader();
@@ -41,7 +40,6 @@ public:
     void addScore(int scoreToAdd);
     int getScore();
 private:
-    //HardwareSerial serie;
     DynamixelInterface interface; //S'ouvre sur le port 1
     DynamixelMotor servo; //Ouvre une communication avec tout les AX12 - Remplacer 254 par l'ID
     Afficheur afficheur;
