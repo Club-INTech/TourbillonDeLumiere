@@ -67,6 +67,8 @@ void checkLoadedFired(){
 }
 
 void stopMatch() {
+    analogWrite(PIN_MOTEUR_PWM, 0);
+    analogWrite(PIN_TURBINE, 0);
     while(true) { //on fait des jolis affichages
         myPenis.spacePrint(); //impression du zizi avec des espaces devant
         myPenis.randomize(); //changement aléatoire de type de zizi
