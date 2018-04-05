@@ -138,7 +138,11 @@ void Robot::fire() {
     int attempt_turbine = 0; //nb de tentatives reellement faites
     hasFiredBall = false; //on remet a zero la variable utilisee par l'interruption
     while (!hasFiredBall && attempt_turbine < TENTATIVE_MAX) { //tant que la balle n'est pas partie ou qu'on n'a pas fait 4 tentatives
-        analogWrite(PIN_TURBINE, PWM_TURBINE);
+        if (isGreen()) {
+            analogWrite(PIN_TURBINE, PWM_TURBINE_GREEN);
+        } else {
+            analogWrite(PIN_TURBINE, PWM_TURBINE_ORANGE);
+        }
         delay(500);
         analogWrite(PIN_TURBINE, 0);
         attempt_turbine++;
