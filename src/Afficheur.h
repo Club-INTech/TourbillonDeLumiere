@@ -2,7 +2,7 @@
 #define AFFICHEUR_H
 
 #include <Wire.h> // Include the Arduino I2C library
-#define DISPLAY_ADDRESS 0x01
+#define DISPLAY_ADDRESS 0x71
 
 class Afficheur {
   public:
