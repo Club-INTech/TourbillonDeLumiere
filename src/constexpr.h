@@ -7,6 +7,8 @@
 
 constexpr int PWM_FREQUENCY = 20000;
 
+constexpr int TRIGGER_SHARP = 200;
+
 constexpr uint16_t SERVO_SPEED = 100;
 constexpr uint16_t ANGLE_AX12_VERT = 190;
 constexpr uint16_t ANGLE_AX12_ORANGE = 10;

@@ -27,6 +27,7 @@ public:
     void init();
     bool isGreen();
     bool start();
+    bool willNotCrashInOtherRobot();
     bool isUnderLoader();
     void moveForward(int speedPercent);
     void moveBackward(int speedPercent);

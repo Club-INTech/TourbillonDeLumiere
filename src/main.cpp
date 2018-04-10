@@ -27,11 +27,15 @@ void loop() {
     delay(300); //pour eviter les rebonds du jumper
 
     while(!robot.start()) { //on attend le debut du match , front montant
+        delay(100);
     }
 
     attachInterrupt(digitalPinToInterrupt(PIN_FIN_COURSE), comeBackUnderLoader, FALLING);
     attachInterrupt(digitalPinToInterrupt(PIN_LASER), checkLoadedFired, CHANGE);
     timer.begin(stopMatch, 100000000);
+
+    while(!robot.willNotCrashInOtherRobot()) {
+    }
 
     while(!robot.isUnderLoader()) { //on se positionne sous le tube
         robot.moveForward(PERCENT_MOTOR); //% de sa vitesse sinon il fonce sous les balles comme un taré

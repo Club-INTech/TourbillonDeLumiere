@@ -72,6 +72,10 @@ bool Robot::start() {
     return (digitalRead(PIN_JUMPER));
 }
 
+bool Robot::willNotCrashInOtherRobot() {
+    return (analogRead(PIN_SHARP) < TRIGGER_SHARP);
+}
+
 bool Robot::isUnderLoader() {
     //indique si le robot est sous le tube de balles
     return digitalRead(PIN_FIN_COURSE);
