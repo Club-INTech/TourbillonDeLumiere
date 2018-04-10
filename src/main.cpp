@@ -38,7 +38,12 @@ void loop() {
     }
 
     while(!robot.isUnderLoader()) { //on se positionne sous le tube
-        robot.moveForward(PERCENT_MOTOR); //% de sa vitesse sinon il fonce sous les balles comme un taré
+        if (robot.willNotCrashInOtherRobot()) {
+            robot.moveForward(PERCENT_MOTOR); //% de sa vitesse sinon il fonce sous les balles comme un taré
+        } else {
+            robot.stop();
+            delay(100);
+        }
     }
 
     robot.stop();
