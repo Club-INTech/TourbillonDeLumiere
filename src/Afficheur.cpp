@@ -66,11 +66,18 @@ void Afficheur::init() {
   // Clear the display, and then turn on all segments and decimals
   clearDisplayI2C();  // Clears display, resets cursor
   setBrightnessI2C(255);  // High brightness
-  display("BITE");
+  scrollText("JE SUIS UNE LICORNE");
   delay(1500);
 
   // Clear the display before jumping into loop
   clearDisplayI2C();
+}
+
+void Afficheur::scrollText(String text) {
+  for (int i=0; i < text.length()-3; i++) {
+    display(text.substring(i,i+4));
+    delay(300);
+  }
 }
 
 void Afficheur::addScore(int value) {

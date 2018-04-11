@@ -13,6 +13,7 @@ class Afficheur {
     void setBrightnessI2C(byte value);
     void setDecimalsI2C(byte decimals);
     void addScore(int value);
+    void scrollText(String text);
     void displayInt(int number);
     void constrainScore();
   private:
