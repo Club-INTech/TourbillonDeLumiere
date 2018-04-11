@@ -17,8 +17,8 @@ constexpr uint16_t ANGLE_AX12_MID = 105;
 constexpr int PWM_TURBINE_ORANGE = 200;
 constexpr int PWM_TURBINE_GREEN = 130;
 constexpr int PERCENT_MOTOR = 40;
-constexpr int PERCENT_MOTOR_BACK = 40;
-constexpr int PERCENT_MOTOR_COME_BACK = 60;
+constexpr int PERCENT_MOTOR_BACK = 30;
+constexpr int PERCENT_MOTOR_COME_BACK = 40;
 
 constexpr int TENTATIVE_MAX = 4;
 constexpr int TENTATIVE_TILT_MAX = 4;

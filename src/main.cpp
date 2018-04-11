@@ -29,13 +29,10 @@ void loop() {
     while(!robot.start()) { //on attend le debut du match , front montant
         delay(100);
     }
-
+    /*Début du match, on active les interruptions et du timer pour l'arret automatique */
     attachInterrupt(digitalPinToInterrupt(PIN_FIN_COURSE), comeBackUnderLoader, FALLING);
     attachInterrupt(digitalPinToInterrupt(PIN_LASER), checkLoadedFired, CHANGE);
     timer.begin(stopMatch, 100000000);
-
-    while(!robot.willNotCrashInOtherRobot()) {
-    }
 
     while(!robot.isUnderLoader()) { //on se positionne sous le tube
         if (robot.willNotCrashInOtherRobot()) {
