@@ -79,15 +79,3 @@ void Afficheur::scrollText(String text) {
     delay(300);
   }
 }
-
-void Afficheur::addScore(int value) {
-  score += value;
-  constrainScore();
-  displayInt(score);
-}
-
-void Afficheur::constrainScore(){
-  if(score > 50 ){
-    score = 50;
-  }
-}
