@@ -18,15 +18,6 @@ Robot::Robot() : interface(Serial2), servo(interface, 254) {
 }
 
 void Robot::init() {
-    interface.begin(9600);  //Ouvre l'interface
-    servo.communicationSpeed(9600);
-    servo.init();			//Initialise le moteur
-    servo.enableTorque();	//Et active le couple
-    servo.jointMode();
-
-    afficheur.init();
-    afficheur.setBrightnessI2C(0xFF);
-    afficheur.display("SUUS");
 
     SoftPWMBegin(SOFTPWM_NORMAL);
 
@@ -53,6 +44,16 @@ void Robot::init() {
     SoftPWMSet(PIN_TURBINE,0);
 
     analogWriteFrequency(PIN_MOTEUR_PWM, PWM_FREQUENCY);
+
+    afficheur.init();
+    afficheur.setBrightnessI2C(0xFF);
+    afficheur.display("SUUS");
+
+    interface.begin(9600);  //Ouvre l'interface
+    servo.communicationSpeed(9600);
+    servo.init();			//Initialise le moteur
+    servo.enableTorque();	//Et active le couple
+    servo.jointMode();
 
     servo.speed(SERVO_SPEED);
     if (isGreen()) {
