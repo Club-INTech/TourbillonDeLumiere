@@ -46,8 +46,6 @@ void Robot::init() {
     analogWriteFrequency(PIN_MOTEUR_PWM, PWM_FREQUENCY);
 
     afficheur.init();
-    afficheur.setBrightnessI2C(0xFF);
-    afficheur.display("SUUS");
 
     interface.begin(9600);  //Ouvre l'interface
     servo.communicationSpeed(9600);
@@ -63,6 +61,8 @@ void Robot::init() {
         servo.goalPositionDegree(ANGLE_AX12_ORANGE);
         currentAngle = ANGLE_AX12_ORANGE;
     }
+
+    afficheur.display("SUUS");
 }
 
 bool Robot::isGreen() {
