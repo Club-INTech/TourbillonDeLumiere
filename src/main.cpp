@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <SoftPWM.h>
 #include "Zizis.h"
 #include "Robot.h"
 
@@ -29,8 +30,9 @@ void loop() {
     while(!robot.start()) { //on attend le debut du match , front montant
         delay(100);
     }
+
     /*Début du match, on active les interruptions et du timer pour l'arret automatique */
-    attachInterrupt(digitalPinToInterrupt(PIN_FIN_COURSE), comeBackUnderLoader, FALLING);
+    /*attachInterrupt(digitalPinToInterrupt(PIN_FIN_COURSE), comeBackUnderLoader, FALLING);
     attachInterrupt(digitalPinToInterrupt(PIN_LASER), checkLoadedFired, CHANGE);
     timer.begin(stopMatch, 100000000);
 
@@ -53,7 +55,12 @@ void loop() {
         robot.addScore(5);
     }
 
-    stopMatch();
+    stopMatch();*/
+
+    SoftPWMSet(PIN_TURBINE, PWM_TURBINE_GREEN);
+    delay(1000);
+    SoftPWMSet(PIN_TURBINE,0);
+    delay(1000);
 }
 
 void comeBackUnderLoader(){

@@ -12,6 +12,7 @@
  */
 
 #include <Robot.h>
+#include <SoftPWM.h>
 
 Robot::Robot() : interface(Serial2), servo(interface, 254) {
 }
@@ -27,10 +28,12 @@ void Robot::init() {
     afficheur.setBrightnessI2C(0xFF);
     afficheur.display("SUUS");
 
+    SoftPWMBegin(SOFTPWM_NORMAL);
+
     /*Declaration des sorties*/
     pinMode(PIN_MOTEUR_PWM, OUTPUT);
     pinMode(PIN_MOTEUR_DIR, OUTPUT);
-    pinMode(PIN_TURBINE, OUTPUT);
+    //pinMode(PIN_TURBINE, OUTPUT);
 
     /*Declaration des entrees*/
     pinMode(PIN_FIN_COURSE, INPUT);
@@ -47,7 +50,7 @@ void Robot::init() {
     /*Mise à 0 initiale des sorties*/
     digitalWrite(PIN_MOTEUR_PWM, LOW);
     digitalWrite(PIN_MOTEUR_DIR, LOW);
-    digitalWrite(PIN_TURBINE, LOW);
+    SoftPWMSet(PIN_TURBINE,0);
 
     analogWriteFrequency(PIN_MOTEUR_PWM, PWM_FREQUENCY);
 
@@ -143,12 +146,12 @@ void Robot::fire() {
     hasFiredBall = false; //on remet a zero la variable utilisee par l'interruption
     while (!hasFiredBall && attempt_turbine < TENTATIVE_MAX) { //tant que la balle n'est pas partie ou qu'on n'a pas fait 4 tentatives
         if (isGreen()) {
-            analogWrite(PIN_TURBINE, PWM_TURBINE_GREEN);
+            SoftPWMSet(PIN_TURBINE, PWM_TURBINE_GREEN);
         } else {
-            analogWrite(PIN_TURBINE, PWM_TURBINE_ORANGE);
+            SoftPWMSet(PIN_TURBINE, PWM_TURBINE_ORANGE);
         }
         delay(500);
-        analogWrite(PIN_TURBINE, 0);
+        SoftPWMSet(PIN_TURBINE, 0);
         attempt_turbine++;
         delay(1000);
     }
