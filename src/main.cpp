@@ -1,15 +1,16 @@
 #include <Arduino.h>
-#include <SoftPWM.h>
 #include "Zizis.h"
 #include "Robot.h"
 
 Zizis myPenis(2);
 Robot robot;
 IntervalTimer timer;
+IntervalTimer antiBlock;
 
 void comeBackUnderLoader();
 void checkLoadedFired();
 void stopMatch();
+void loaderNotDetected();
 
 //Initialisation de la Serie
 void setup() {
@@ -39,6 +40,7 @@ void loop() {
     while(!robot.isUnderLoader()) { //on se positionne sous le tube
         if (robot.willNotCrashInOtherRobot()) {
             robot.moveForward(PERCENT_MOTOR); //% de sa vitesse sinon il fonce sous les balles comme un taré
+            antiBlock.begin(loaderNotDetected, 10000000);
         } else {
             robot.stop();
             delay(100);
@@ -47,6 +49,7 @@ void loop() {
 
     robot.stop();
     robot.addScore(10);
+    antiBlock.end();
 
     while (robot.getScore() < 50 ){ //on lance les 8 balles
         robot.loadBall();
@@ -81,5 +84,20 @@ void stopMatch() {
         myPenis.spacePrint(); //impression du zizi avec des espaces devant
         myPenis.randomize(); //changement aléatoire de type de zizi
         delay(500);
+    }
+}
+
+void loaderNotDetected() {
+    robot.stop();
+    robot.moveBackward(PERCENT_MOTOR_BACK);
+    delay(500);
+    robot.stop();
+    while(!robot.isUnderLoader()) { //on se positionne sous le tube
+        if (robot.willNotCrashInOtherRobot()) {
+            robot.moveForward(PERCENT_MOTOR); //% de sa vitesse sinon il fonce sous les balles comme un taré
+        } else {
+            robot.stop();
+            delay(100);
+        }
     }
 }
