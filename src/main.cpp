@@ -36,14 +36,16 @@ void loop() {
     attachInterrupt(digitalPinToInterrupt(PIN_FIN_COURSE), comeBackUnderLoader, FALLING);
     attachInterrupt(digitalPinToInterrupt(PIN_LASER), checkLoadedFired, CHANGE);
     timer.begin(stopMatch, 100000000);
+    antiBlock.begin(loaderNotDetected, 10000000);
 
     while(!robot.isUnderLoader()) { //on se positionne sous le tube
         if (robot.willNotCrashInOtherRobot()) {
             robot.moveForward(PERCENT_MOTOR); //% de sa vitesse sinon il fonce sous les balles comme un taré
-            antiBlock.begin(loaderNotDetected, 10000000);
         } else {
             robot.stop();
-            delay(100);
+            antiBlock.end();
+            while(!robot.willNotCrashInOtherRobot()) { delay(100); }
+            antiBlock.begin(loaderNotDetected, 10000000);
         }
     }
 
@@ -97,7 +99,10 @@ void loaderNotDetected() {
             robot.moveForward(PERCENT_MOTOR); //% de sa vitesse sinon il fonce sous les balles comme un taré
         } else {
             robot.stop();
-            delay(100);
+            antiBlock.end();
+            while(!robot.willNotCrashInOtherRobot()) { delay(100); }
+            antiBlock.begin(loaderNotDetected, 10000000);
         }
     }
+    antiBlock.end();
 }
