@@ -90,18 +90,23 @@ void stopMatch() {
 }
 
 void loaderNotDetected() {
+    int count = 0;
     robot.stop();
     robot.moveBackward(PERCENT_MOTOR_BACK);
-    delay(500);
+    delay(2000);
     robot.stop();
     while(!robot.isUnderLoader()) { //on se positionne sous le tube
         if (robot.willNotCrashInOtherRobot()) {
             robot.moveForward(PERCENT_MOTOR); //% de sa vitesse sinon il fonce sous les balles comme un taré
+            count++;
+            if (count > 100) {
+                loaderNotDetected();
+            }
+            delay(100);
         } else {
             robot.stop();
             antiBlock.end();
-            while(!robot.willNotCrashInOtherRobot()) { delay(100); }
-            antiBlock.begin(loaderNotDetected, 10000000);
+            while(!robot.willNotCrashInOtherRobot()) { delay(100);}
         }
     }
     antiBlock.end();
