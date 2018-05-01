@@ -159,6 +159,7 @@ void Robot::fire() {
 }
 
 void Robot::setAngleAndWait(uint16_t angle) {
+    angle = constrain(angle, 0, 300);
     servo.speed(SERVO_SPEED);
     servo.goalPositionDegree(angle);
     uint32_t timeToMove = (uint32_t)(2200*abs(currentAngle - angle))/SERVO_SPEED;
