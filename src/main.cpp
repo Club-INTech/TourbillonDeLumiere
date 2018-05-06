@@ -27,7 +27,7 @@ void setup() {
 
 //Boucle principale
 void loop() {
-
+    /*Attente d'un front montant sur le jumper*/
     attachInterrupt(digitalPinToInterrupt(PIN_JUMPER), beginMatch, RISING);
 
     while(!isMatchStarted) {
@@ -37,9 +37,11 @@ void loop() {
     /*Début du match, on active les interruptions et du timer pour l'arret automatique */
     attachInterrupt(digitalPinToInterrupt(PIN_FIN_COURSE), comeBackUnderLoader, FALLING);
     attachInterrupt(digitalPinToInterrupt(PIN_LASER), checkLoadedFired, CHANGE);
-    timer.begin(stopMatch, 100000000);
-    timerSuicide(theLastChance, 90000000);
-    antiBlock.begin(loaderNotDetected, 10000000);
+
+    /*On demarre aussi tous les timers*/
+    timer.begin(stopMatch, 100000000); //Timer qui sert pour arreter le match au bout de 100s
+    timerSuicide.begin(theLastChance, 90000000);  //Timer qui fait revenir le robot pour liberer des balles au bout de 90s si on n'a pas fait de points
+    antiBlock.begin(loaderNotDetected, 5000000);   //Si on n'a pas detecte le reservoir au bout d'un certain temps on recule et reavance
 
     while(!robot.isUnderLoader()) { //on se positionne sous le tube
         if (robot.willNotCrashInOtherRobot()) {
@@ -48,7 +50,7 @@ void loop() {
             robot.stop();
             antiBlock.end();
             while(!robot.willNotCrashInOtherRobot()) { delay(100); }
-            antiBlock.begin(loaderNotDetected, 10000000);
+            antiBlock.begin(loaderNotDetected, 5000000);
         }
     }
 
@@ -106,7 +108,7 @@ void loaderNotDetected() {
         if (robot.willNotCrashInOtherRobot()) {
             robot.moveForward(PERCENT_MOTOR); //% de sa vitesse sinon il fonce sous les balles comme un taré
             count++;
-            if (count > 100) {
+            if (count > 50) {
                 loaderNotDetected();
             }
             delay(100);
