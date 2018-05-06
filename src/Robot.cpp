@@ -35,7 +35,6 @@ void Robot::init() {
     /*Activation des resistances de pull-up internes*/
     digitalWrite(PIN_FIN_COURSE, HIGH);
     digitalWrite(PIN_LASER, HIGH);
-    digitalWrite(PIN_JUMPER, HIGH);
     digitalWrite(PIN_SELECT_SIDE, HIGH);
 
     /*Mise à 0 initiale des sorties*/
@@ -159,7 +158,7 @@ void Robot::fire() {
 }
 
 void Robot::setAngleAndWait(uint16_t angle) {
-    angle = constrain(angle, 0, 300);
+    angle = (uint16_t)constrain(angle, 0, 300);
     servo.speed(SERVO_SPEED);
     servo.goalPositionDegree(angle);
     uint32_t timeToMove = (uint32_t)(2200*abs(currentAngle - angle))/SERVO_SPEED;

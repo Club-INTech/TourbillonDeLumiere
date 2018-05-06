@@ -7,6 +7,9 @@ Robot robot;
 IntervalTimer timer;
 IntervalTimer antiBlock;
 
+bool isMatchStarted = 0;
+
+void beginMatch();
 void comeBackUnderLoader();
 void checkLoadedFired();
 void stopMatch();
@@ -23,12 +26,9 @@ void setup() {
 //Boucle principale
 void loop() {
 
-    while(robot.start()) { //on attend le debut du match
-    }
+    attachInterrupt(digitalPinToInterrupt(PIN_JUMPER), beginMatch, RISING);
 
-    delay(300); //pour eviter les rebonds du jumper
-
-    while(!robot.start()) { //on attend le debut du match , front montant
+    while(!isMatchStarted) {
         delay(100);
     }
 
@@ -61,6 +61,10 @@ void loop() {
     }
 
     stopMatch();
+}
+
+void beginMatch(){
+    isMatchStarted = 1;
 }
 
 void comeBackUnderLoader(){
