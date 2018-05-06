@@ -6,6 +6,7 @@ Zizis myPenis(2);
 Robot robot;
 IntervalTimer timer;
 IntervalTimer antiBlock;
+IntervalTimer timerSuicide;
 
 bool isMatchStarted = 0;
 
@@ -14,6 +15,7 @@ void comeBackUnderLoader();
 void checkLoadedFired();
 void stopMatch();
 void loaderNotDetected();
+void theLastChance();
 
 //Initialisation de la Serie
 void setup() {
@@ -36,6 +38,7 @@ void loop() {
     attachInterrupt(digitalPinToInterrupt(PIN_FIN_COURSE), comeBackUnderLoader, FALLING);
     attachInterrupt(digitalPinToInterrupt(PIN_LASER), checkLoadedFired, CHANGE);
     timer.begin(stopMatch, 100000000);
+    timerSuicide(theLastChance, 90000000);
     antiBlock.begin(loaderNotDetected, 10000000);
 
     while(!robot.isUnderLoader()) { //on se positionne sous le tube
@@ -114,4 +117,12 @@ void loaderNotDetected() {
         }
     }
     antiBlock.end();
+}
+
+void theLastChance(){
+    if (robot.getScore() < 10) {
+        robot.moveBackward(PERCENT_MOTOR_BACK);
+        delay(2000);
+        stopMatch();
+    }
 }
