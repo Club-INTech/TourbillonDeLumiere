@@ -125,8 +125,13 @@ void loaderNotDetected() {
 
 void theLastChance(){
     if (robot.getScore() < 10) {
+        robot.stop();
+        delay(1000);
+        robot.moveForward(100);
+        delay(500);
         robot.moveBackward(PERCENT_MOTOR_BACK);
         delay(2000);
+        robot.addScore(10);
         stopMatch();
     }
 }
