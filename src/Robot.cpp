@@ -76,6 +76,7 @@ bool Robot::start() {
 }
 
 bool Robot::willNotCrashInOtherRobot() {
+    //indique si il y a un obstacle devant le robot
     return (analogRead(PIN_SHARP) < TRIGGER_SHARP);
 }
 
@@ -107,11 +108,7 @@ void Robot::loadBall() {
     //permet de charger une balle dans le canon
     uint16_t angle_load;
 
-    if (isGreen()) {
-        angle_load = ANGLE_AX12_VERT;
-    } else {
-        angle_load = ANGLE_AX12_ORANGE;
-    }
+    angle_load = isGreen() ? ANGLE_AX12_VERT : ANGLE_AX12_ORANGE;
     
     setAngleAndWait(angle_load);
     tiltAX12();
@@ -121,6 +118,7 @@ void Robot::loadBall() {
 }
 
 void Robot::tiltAX12(){
+    //permet de bouger un peu autour de la position de l'AX12
     int sign = isGreen() ? -1 : 1;
     setAngleAndWait(uint16_t(currentAngle + (10*sign)));
     setAngleAndWait(uint16_t(currentAngle - (10*sign)));
@@ -158,19 +156,22 @@ void Robot::fire() {
 }
 
 void Robot::setAngleAndWait(uint16_t angle) {
+    //amene l'AX12 sur un angle et attends qu'il soit arrive
     angle = (uint16_t)constrain(angle, 0, 300);
     servo.speed(SERVO_SPEED);
     servo.goalPositionDegree(angle);
-    uint32_t timeToMove = (uint32_t)(2200*abs(currentAngle - angle))/SERVO_SPEED;
-    delay(timeToMove); //valeur a ajuster
+    uint32_t timeToMove = (uint32_t)(2200*abs(currentAngle - angle))/SERVO_SPEED; //valeur a ajuster
+    delay(timeToMove);
     currentAngle = angle;
 }
 
 int Robot::getScore() {
+    //renvoie le score reellement effectue par le robot
     return score;
 }
 
 void Robot::addScore(int scoreToAdd){
+    //increment le score de scoreToAdd et met a jour l'afficheur
     score += scoreToAdd;
     afficheur.displayInt(score);
 }
