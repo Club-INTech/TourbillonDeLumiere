@@ -11,7 +11,7 @@ constexpr int TRIGGER_SHARP = 500;
 
 constexpr uint16_t SERVO_SPEED = 100;
 constexpr uint16_t ANGLE_AX12_VERT = 190;
-constexpr uint16_t ANGLE_AX12_ORANGE = 5;
+constexpr uint16_t ANGLE_AX12_ORANGE = 10;
 constexpr uint16_t ANGLE_AX12_MID = 105;
 
 constexpr int PWM_TURBINE_ORANGE = 200;
