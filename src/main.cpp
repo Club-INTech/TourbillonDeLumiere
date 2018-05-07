@@ -55,12 +55,14 @@ void loop() {
     }
 
     robot.stop();
-    robot.addScore(10);
     antiBlock.end();
 
     while (robot.getScore() < 50 ){ //on lance les 8 balles
         robot.loadBall();
         robot.fire();
+        if (robot.getScore() == 0){
+            robot.addScore(10);
+        }
         robot.moveBackward(PERCENT_MOTOR_BACK);
         robot.addScore(5);
     }
