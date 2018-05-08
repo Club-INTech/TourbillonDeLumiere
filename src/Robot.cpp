@@ -178,3 +178,11 @@ void Robot::addScore(int scoreToAdd){
     score += scoreToAdd;
     afficheur.displayInt(score);
 }
+
+void Robot::print(String chaine){
+    afficheur.display(chaine);
+}
+
+void Robot::printScore(){
+    afficheur.displayInt(score);
+}

@@ -40,6 +40,8 @@ public:
     bool hasBallLoaded;
     void addScore(int scoreToAdd);
     int getScore();
+    void print(String chaine);
+    void printScore();
 private:
     DynamixelInterface interface; //S'ouvre sur le port 1
     DynamixelMotor servo; //Ouvre une communication avec tout les AX12 - Remplacer 254 par l'ID
