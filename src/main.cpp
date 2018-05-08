@@ -60,13 +60,12 @@ void loop() {
     while (robot.getScore() < 50 ){ //on lance les 8 balles
         robot.loadBall();
         robot.fire();
+        robot.moveBackward(PERCENT_MOTOR_BACK);
         if (robot.getScore() == 0){
             robot.addScore(10);
         }
-        robot.moveBackward(PERCENT_MOTOR_BACK);
         robot.addScore(5);
     }
-
     stopMatch();
 }
 
