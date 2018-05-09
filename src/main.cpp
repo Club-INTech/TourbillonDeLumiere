@@ -108,7 +108,7 @@ void loaderNotDetected() {
     int count = 0;
     robot.stop();
     robot.moveBackward(PERCENT_MOTOR_BACK);
-    delay(2000);
+    delay(300);
     robot.stop();
     while(!robot.isUnderLoader()) { //on se positionne sous le tube
         if (robot.willNotCrashInOtherRobot()) {
