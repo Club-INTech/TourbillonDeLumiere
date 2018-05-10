@@ -187,3 +187,11 @@ void Robot::print(String chaine){
 void Robot::printScore(){
     afficheur.displayInt(score);
 }
+
+void Robot::adjustScore(){
+    if (isGreen()){
+        score = max(10, score - 10);
+    } else {
+        score = max(10, score - 5);
+    }
+}
