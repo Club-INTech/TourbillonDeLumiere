@@ -123,7 +123,7 @@ void Robot::loadBall() {
             attempt_tilt++;
         } else {
             attempt_tilt = 0;
-            moveBackward(PERCENT_MOTOR_COME_BACK);
+            moveBackward(PERCENT_MOTOR_BACK);
             loadBall();
         }
     }
