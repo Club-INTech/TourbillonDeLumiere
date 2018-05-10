@@ -127,6 +127,7 @@ void Robot::loadBall() {
             loadBall();
         }
     }
+    moveBackward(PERCENT_MOTOR_BACK);
     setAngleAndWait(angle_load);
 }
 
