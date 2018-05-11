@@ -41,8 +41,9 @@ void loop() {
     /*On demarre aussi tous les timers*/
     timer.priority(0); //Priorite maximum, il doit absolument s'arreter
     timer.begin(stopMatch, 100000000); //Timer qui sert pour arreter le match au bout de 100s
+    timerSuicide.priority(16);
     timerSuicide.begin(theLastChance, 90000000);  //Timer qui fait revenir le robot pour liberer des balles au bout de 90s si on n'a pas fait de points
-    antiBlock.priority(128);
+    antiBlock.priority(112);
     antiBlock.begin(loaderNotDetected, 5000000);   //Si on n'a pas detecte le reservoir au bout d'un certain temps on recule et reavance
 
     while(!robot.isUnderLoader()) { //on se positionne sous le tube
@@ -76,6 +77,7 @@ void beginMatch(){
 }
 
 void comeBackUnderLoader(){
+    antiBlock.begin(loaderNotDetected, 5000000);
 	while(!robot.isUnderLoader()){
 		robot.moveForward(PERCENT_MOTOR_COME_BACK);
 	}
