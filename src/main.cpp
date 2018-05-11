@@ -82,6 +82,7 @@ void comeBackUnderLoader(){
 		robot.moveForward(PERCENT_MOTOR_COME_BACK);
 	}
 	robot.stop();
+    antiBlock.end();
 }
 
 void checkLoadedFired(){
