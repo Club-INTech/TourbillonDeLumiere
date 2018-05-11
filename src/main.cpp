@@ -40,7 +40,7 @@ void loop() {
 
     /*On demarre aussi tous les timers*/
     timer.priority(0); //Priorite maximum, il doit absolument s'arreter
-    timer.begin(stopMatch, 100000000); //Timer qui sert pour arreter le match au bout de 100s
+    timer.begin(stopMatch, 98000000); //Timer qui sert pour arreter le match au bout de 100s
     timerSuicide.priority(16);
     timerSuicide.begin(theLastChance, 90000000);  //Timer qui fait revenir le robot pour liberer des balles au bout de 90s si on n'a pas fait de points
     antiBlock.priority(112);
@@ -65,6 +65,9 @@ void loop() {
         if(!robot.isMatchFinished) {
             robot.fire();
             robot.moveBackward(PERCENT_MOTOR_BACK);
+            if(robot.getScore() == 0){
+                robot.addScore(10);
+            }
             robot.addScore(5);
         }
     }

@@ -127,8 +127,10 @@ void Robot::loadBall() {
                 loadBall();
             }
         }
-        moveBackward(PERCENT_MOTOR_BACK);
-        setAngleAndWait(angle_load);
+        if (!isMatchFinished) {
+            moveBackward(PERCENT_MOTOR_BACK);
+            setAngleAndWait(angle_load);
+        }
     }
 }
 
