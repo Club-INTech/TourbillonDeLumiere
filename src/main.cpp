@@ -5,6 +5,7 @@
 Zizis myPenis(2);
 Robot robot;
 IntervalTimer timer;
+IntervalTimer timerSafe;
 IntervalTimer antiBlock;
 IntervalTimer timerSuicide;
 
@@ -40,6 +41,9 @@ void loop() {
 
     /*On demarre aussi tous les timers*/
     timer.begin(stopMatch, 100000000); //Timer qui sert pour arreter le match au bout de 100s
+    timer.priority(0); //Priorite maximum, il doit absolument s'arreter
+    timerSafe.begin(stopMatch, 101000000);
+    timer.priority(20);
     timerSuicide.begin(theLastChance, 90000000);  //Timer qui fait revenir le robot pour liberer des balles au bout de 90s si on n'a pas fait de points
     antiBlock.begin(loaderNotDetected, 5000000);   //Si on n'a pas detecte le reservoir au bout d'un certain temps on recule et reavance
 
