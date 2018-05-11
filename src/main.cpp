@@ -46,7 +46,7 @@ void loop() {
     antiBlock.priority(112);
     antiBlock.begin(loaderNotDetected, 5000000);   //Si on n'a pas detecte le reservoir au bout d'un certain temps on recule et reavance
 
-    while(!robot.isUnderLoader()) { //on se positionne sous le tube
+    while(!robot.isUnderLoader() && !robot.isMatchFinished) { //on se positionne sous le tube
         if (robot.willNotCrashInOtherRobot()) {
             robot.moveForward(PERCENT_MOTOR); //% de sa vitesse sinon il fonce sous les balles comme un taré
         } else {
@@ -60,16 +60,35 @@ void loop() {
     robot.stop();
     antiBlock.end();
 
-    while (robot.getScore() < 50 ){ //on lance les 8 balles
+    while (robot.getScore() < 50 && !robot.isMatchFinished){ //on lance les 8 balles
         robot.loadBall();
-        robot.fire();
-        robot.moveBackward(PERCENT_MOTOR_BACK);
-        if (robot.getScore() == 0){
-            robot.addScore(10);
+        if(!robot.isMatchFinished) {
+            robot.fire();
+            robot.moveBackward(PERCENT_MOTOR_BACK);
+            robot.addScore(5);
         }
-        robot.addScore(5);
     }
+
+    antiBlock.end();
+    antiBlock.priority(240);
+    timerSuicide.end();
+    timerSuicide.priority(240);
+    timer.end();
+    timer.priority(240);
+
     stopMatch();
+    robot.adjustScore();
+
+    while(robot.isMatchFinished) { //on fait des jolis affichages
+        robot.print("    ");
+        myPenis.spacePrint(); //impression du zizi avec des espaces devant
+        myPenis.randomize(); //changement aléatoire de type de zizi
+        delay(500);
+        robot.printScore();
+        myPenis.spacePrint(); //impression du zizi avec des espaces devant
+        myPenis.randomize(); //changement aléatoire de type de zizi
+        delay(500);
+    }
 }
 
 void beginMatch(){
@@ -77,11 +96,14 @@ void beginMatch(){
 }
 
 void comeBackUnderLoader(){
-    antiBlock.begin(loaderNotDetected, 5000000);
-	while(!robot.isUnderLoader()){
-		robot.moveForward(PERCENT_MOTOR_COME_BACK);
-	}
-	robot.stop();
+    if (!robot.isMatchFinished) {
+        antiBlock.priority(112);
+        antiBlock.begin(loaderNotDetected, 5000000);
+        while (!robot.isUnderLoader() && !robot.isMatchFinished) {
+            robot.moveForward(PERCENT_MOTOR_COME_BACK);
+        }
+    }
+    robot.stop();
     antiBlock.end();
 }
 
@@ -97,43 +119,36 @@ void checkLoadedFired(){
 void stopMatch() {
     analogWrite(PIN_MOTEUR_PWM, 0);
     analogWrite(PIN_TURBINE, 0);
-    robot.adjustScore();
-    while(true) { //on fait des jolis affichages
-        robot.print("    ");
-        myPenis.spacePrint(); //impression du zizi avec des espaces devant
-        myPenis.randomize(); //changement aléatoire de type de zizi
-        delay(500);
-        robot.printScore();
-        myPenis.spacePrint(); //impression du zizi avec des espaces devant
-        myPenis.randomize(); //changement aléatoire de type de zizi
-        delay(500);
-    }
+    robot.isMatchFinished = 1;
 }
 
 void loaderNotDetected() {
-    int count = 0;
-    robot.stop();
-    robot.moveBackward(PERCENT_MOTOR_BACK);
-    delay(300);
-    robot.stop();
-    while(!robot.isUnderLoader()) { //on se positionne sous le tube
-        if (robot.willNotCrashInOtherRobot()) {
-            robot.moveForward(PERCENT_MOTOR); //% de sa vitesse sinon il fonce sous les balles comme un taré
-            count++;
-            if (count > 50) {
-                loaderNotDetected();
+    if (!robot.isMatchFinished){
+        int count = 0;
+        robot.stop();
+        robot.moveBackward(PERCENT_MOTOR_BACK);
+        delay(300);
+        robot.stop();
+        while(!robot.isUnderLoader() && !robot.isMatchFinished) { //on se positionne sous le tube
+            if (robot.willNotCrashInOtherRobot()) {
+                robot.moveForward(PERCENT_MOTOR); //% de sa vitesse sinon il fonce sous les balles comme un taré
+                count++;
+                if (count > 50) {
+                    loaderNotDetected();
+                }
+                delay(100);
+            } else {
+                robot.stop();
+                antiBlock.end();
+                while(!robot.willNotCrashInOtherRobot()) { delay(100);}
             }
-            delay(100);
-        } else {
-            robot.stop();
-            antiBlock.end();
-            while(!robot.willNotCrashInOtherRobot()) { delay(100);}
         }
     }
     antiBlock.end();
 }
 
 void theLastChance(){
+    antiBlock.end();
     if (robot.getScore() < 10) {
         robot.stop();
         delay(1000);

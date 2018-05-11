@@ -109,26 +109,27 @@ void Robot::loadBall() {
     uint16_t angle_load;
 
     angle_load = isGreen() ? ANGLE_AX12_VERT : ANGLE_AX12_ORANGE;
-    
-    setAngleAndWait(angle_load);
-    tiltAX12();
+    if (!isMatchFinished) {
+        setAngleAndWait(angle_load);
+        tiltAX12();
 
-    setAngleAndWait(ANGLE_AX12_MID);
-    tiltAX12();
+        setAngleAndWait(ANGLE_AX12_MID);
+        tiltAX12();
 
-    int attempt_tilt = 0;
-    while (!hasBallLoaded){
-        if (attempt_tilt < TENTATIVE_TILT_MAX) {
-            tiltAX12();
-            attempt_tilt++;
-        } else {
-            attempt_tilt = 0;
-            moveBackward(PERCENT_MOTOR_BACK);
-            loadBall();
+        int attempt_tilt = 0;
+        while (!hasBallLoaded && !isMatchFinished) {
+            if (attempt_tilt < TENTATIVE_TILT_MAX) {
+                tiltAX12();
+                attempt_tilt++;
+            } else {
+                attempt_tilt = 0;
+                moveBackward(PERCENT_MOTOR_BACK);
+                loadBall();
+            }
         }
+        moveBackward(PERCENT_MOTOR_BACK);
+        setAngleAndWait(angle_load);
     }
-    moveBackward(PERCENT_MOTOR_BACK);
-    setAngleAndWait(angle_load);
 }
 
 void Robot::tiltAX12(){
