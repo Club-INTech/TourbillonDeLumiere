@@ -193,6 +193,6 @@ void Robot::printScore(){
 
 void Robot::adjustScore(){
     if (isGreen()){
-        score = max(10, score - 10);
+        score = max(10, score - 5);
     }
 }
