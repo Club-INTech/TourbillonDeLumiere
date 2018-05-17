@@ -45,6 +45,11 @@ void Robot::init() {
 
     afficheur.init();
 
+    barilol.setDirection(0);
+    barilol.stepDegree(45);
+    barilol.setDirection(1);
+    barilol.stepDegree(45);
+
     afficheur.display("SUUS");
 }
 

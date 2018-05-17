@@ -21,6 +21,8 @@
 #define PIN_SELECT_SIDE 11
 #define PIN_JUMPER 12
 #define PIN_FIN_COURSE 14
+#define PIN_DIR_BARILOL 16
+#define PIN_STEP_BARILOL 17
 #define PIN_SHARP A1
 
 #endif /* PINMAPPING_H */

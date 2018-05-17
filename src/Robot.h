@@ -50,7 +50,7 @@ private:
     DynamixelInterface interface; //S'ouvre sur le port 1
     DynamixelMotor servo; //Ouvre une communication avec tout les AX12 - Remplacer 254 par l'ID
     Afficheur afficheur;
-    StepperMotor barilol = StepperMotor(8,9);
+    StepperMotor barilol = StepperMotor(200,PIN_DIR_BARILOL,PIN_STEP_BARILOL);
     uint16_t currentAngle;
     int score = 0;
 };
