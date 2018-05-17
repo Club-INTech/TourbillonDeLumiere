@@ -24,7 +24,6 @@ void Robot::init() {
     /*Declaration des sorties*/
     pinMode(PIN_MOTEUR_PWM, OUTPUT);
     pinMode(PIN_MOTEUR_DIR, OUTPUT);
-    //pinMode(PIN_TURBINE, OUTPUT);
 
     /*Declaration des entrees*/
     pinMode(PIN_FIN_COURSE, INPUT);
