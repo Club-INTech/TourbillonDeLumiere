@@ -46,21 +46,6 @@ void Robot::init() {
 
     afficheur.init();
 
-    interface.begin(9600);  //Ouvre l'interface
-    servo.communicationSpeed(9600);
-    servo.init();			//Initialise le moteur
-    servo.enableTorque();	//Et active le couple
-    servo.jointMode();
-
-    servo.speed(SERVO_SPEED);
-    if (isGreen()) {
-        servo.goalPositionDegree(ANGLE_AX12_VERT);
-        currentAngle = ANGLE_AX12_VERT;
-    } else {
-        servo.goalPositionDegree(ANGLE_AX12_ORANGE);
-        currentAngle = ANGLE_AX12_ORANGE;
-    }
-
     afficheur.display("SUUS");
 }
 
@@ -104,46 +89,6 @@ void Robot::stop() {
     analogWrite(PIN_MOTEUR_PWM, 0);
 }
 
-void Robot::loadBall() {
-    //permet de charger une balle dans le canon
-    uint16_t angle_load;
-
-    angle_load = isGreen() ? ANGLE_AX12_VERT : ANGLE_AX12_ORANGE;
-    if (!isMatchFinished) {
-        setAngleAndWait(angle_load);
-        tiltAX12();
-
-        setAngleAndWait(ANGLE_AX12_MID);
-        tiltAX12();
-
-        int attempt_tilt = 0;
-        while (!hasBallLoaded && !isMatchFinished) {
-            if (attempt_tilt < TENTATIVE_TILT_MAX) {
-                tiltAX12();
-                attempt_tilt++;
-            } else {
-                attempt_tilt = 0;
-                moveBackward(PERCENT_MOTOR_BACK);
-                loadBall();
-            }
-        }
-        if (!isMatchFinished) {
-            moveBackward(PERCENT_MOTOR_BACK);
-            setAngleAndWait(angle_load);
-        }
-    }
-}
-
-void Robot::tiltAX12(){
-    //permet de bouger un peu autour de la position de l'AX12
-    int sign = isGreen() ? -1 : 1;
-    setAngleAndWait(uint16_t(currentAngle + (10*sign)));
-    setAngleAndWait(uint16_t(currentAngle - (10*sign)));
-    delay(100);
-    setAngleAndWait(uint16_t(currentAngle - (10*sign)));
-    setAngleAndWait(uint16_t(currentAngle + (10*sign)));
-}
-
 void Robot::fire() {
     //permet d'allumer la turbine, en vérifiant qu'une balle est partie grâce au laser
 
@@ -160,16 +105,6 @@ void Robot::fire() {
         attempt_turbine++;
         delay(1000);
     }
-}
-
-void Robot::setAngleAndWait(uint16_t angle) {
-    //amene l'AX12 sur un angle et attends qu'il soit arrive
-    angle = (uint16_t)constrain(angle, 0, 300);
-    servo.speed(SERVO_SPEED);
-    servo.goalPositionDegree(angle);
-    uint32_t timeToMove = (uint32_t)(2200*abs(currentAngle - angle))/SERVO_SPEED; //valeur a ajuster
-    delay(timeToMove);
-    currentAngle = angle;
 }
 
 int Robot::getScore() {

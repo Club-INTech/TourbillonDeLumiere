@@ -7,6 +7,8 @@
 StepperMotor::StepperMotor(int pinDir, int pinStep) {
     this->pinDir = pinDir;
     this->pinStep = pinStep;
+    pinMode(pinDir, OUTPUT);
+    pinMode(pinStep, OUTPUT);
 }
 
 void StepperMotor::setDirection(bool dir) {

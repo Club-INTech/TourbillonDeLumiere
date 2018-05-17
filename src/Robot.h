@@ -20,6 +20,7 @@
 #include <pinMapping.h>
 #include <constexpr.h>
 #include "Afficheur.h"
+#include "Actuators/StepperMotor.h"
 
 class Robot {
 public:
@@ -49,6 +50,7 @@ private:
     DynamixelInterface interface; //S'ouvre sur le port 1
     DynamixelMotor servo; //Ouvre une communication avec tout les AX12 - Remplacer 254 par l'ID
     Afficheur afficheur;
+    StepperMotor barilol = StepperMotor(8,9);
     uint16_t currentAngle;
     int score = 0;
 };
