@@ -20,7 +20,8 @@ constexpr uint8_t PIN_LASER = 7;
 constexpr uint8_t PIN_TURBINE =8;
 constexpr uint8_t PIN_SELECT_SIDE = 11;
 constexpr uint8_t PIN_JUMPER = 12;
-constexpr uint8_t PIN_FIN_COURSE = 14;
+constexpr uint8_t PIN_FIN_COURSE_LASER = 14;
+constexpr uint8_t PIN_FIN_COURSE = 666;
 #define PIN_SHARP A1
 
 #endif /* PINMAPPING_H */
