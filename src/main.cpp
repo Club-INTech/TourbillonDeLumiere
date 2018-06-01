@@ -43,44 +43,52 @@ void loop() {
     timer.begin(stopMatch, 98000000); //Timer qui sert pour arreter le match au bout de 100s
     timerSuicide.priority(16);
     timerSuicide.begin(theLastChance, 90000000);  //Timer qui fait revenir le robot pour liberer des balles au bout de 90s si on n'a pas fait de points
-    antiBlock.priority(112);
-    antiBlock.begin(loaderNotDetected, 5000000);   //Si on n'a pas detecte le reservoir au bout d'un certain temps on recule et reavance
+//    antiBlock.priority(112);
+//    antiBlock.begin(loaderNotDetected, 5000000);   //Si on n'a pas detecte le reservoir au bout d'un certain temps on recule et reavance
 
     while(!robot.isUnderLoader() && !robot.isMatchFinished) { //on se positionne sous le tube
         if (robot.willNotCrashInOtherRobot()) {
             robot.moveForward(PERCENT_MOTOR); //% de sa vitesse sinon il fonce sous les balles comme un taré
         } else {
             robot.stop();
-            antiBlock.end();
-            while(!robot.willNotCrashInOtherRobot()) { delay(100); }
-            antiBlock.begin(loaderNotDetected, 5000000);
+//            antiBlock.end();
+//            while(!robot.willNotCrashInOtherRobot()) { delay(100); }
+//            antiBlock.begin(loaderNotDetected, 5000000);
+            delay(100);
         }
     }
 
     robot.stop();
-    antiBlock.end();
+//    antiBlock.end();
 
-    while (robot.getScore() < 50 && !robot.isMatchFinished){ //on lance les 8 balles
-        robot.loadBall();
-        if(!robot.isMatchFinished) {
-            robot.fire();
-            robot.moveBackward(PERCENT_MOTOR_BACK);
-            if(robot.getScore() == 0){
-                robot.addScore(10);
-            }
-            robot.addScore(5);
+    //On attend que les balles tombent dans le reservoir
+    delay(3000);
+    robot.addScore(10);
+
+    //On se positionne à côté de l'abeille
+    while(!robot.isAtBee() && !robot.isMatchFinished) {
+        if (robot.willNotCrashInOtherRobot()) {
+            robot.moveForward(PERCENT_MOTOR_FORWARD); // On évite d'aller trop vite pour ne pas féconder le mur
+        } else {
+            robot.stop();
+            delay(100);
         }
     }
 
-    antiBlock.end();
-    antiBlock.priority(240);
+
+    //On lance l'abeille
+    robot.fireBee();
+    robot.addScore(50);
+
+//    antiBlock.end();
+//    antiBlock.priority(240);
     timerSuicide.end();
     timerSuicide.priority(240);
     timer.end();
     timer.priority(240);
 
     stopMatch();
-    robot.adjustScore();
+//    robot.adjustScore();
 
     while(robot.isMatchFinished) { //on fait des jolis affichages
         robot.print("    ");

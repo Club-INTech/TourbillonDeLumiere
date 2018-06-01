@@ -82,6 +82,11 @@ bool Robot::willNotCrashInOtherRobot() {
 
 bool Robot::isUnderLoader() {
     //indique si le robot est sous le tube de balles
+    return digitalRead(PIN_FIN_COURSE_LASER);
+}
+
+bool Robot::isAtBee() {
+    //indique si le robot est au niveau de l'abeille
     return digitalRead(PIN_FIN_COURSE);
 }
 
@@ -159,6 +164,15 @@ void Robot::fire() {
         SoftPWMSet(PIN_TURBINE, 0);
         attempt_turbine++;
         delay(1000);
+    }
+}
+
+void Robot::fireBee() {
+    //lance l'abeille
+    int nb_test = 1; //nombre de tentative pour l'abeille
+    for (int i = 0; i < nb_test; i++){
+        setAngleAndWait(0);
+        setAngleAndWait(90);
     }
 }
 

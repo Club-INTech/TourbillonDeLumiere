@@ -29,11 +29,13 @@ public:
     bool start();
     bool willNotCrashInOtherRobot();
     bool isUnderLoader();
+    bool isAtBee();
     void moveForward(int speedPercent);
     void moveBackward(int speedPercent);
     void stop();
     void loadBall();
     void fire();
+    void fireBee();
     void setAngleAndWait(uint16_t angle);
     void tiltAX12();
     bool hasFiredBall;
