@@ -75,6 +75,7 @@ void loop() {
         }
     }
 
+    robot.stop();
 
     //On lance l'abeille
     robot.fireBee();

@@ -169,10 +169,11 @@ void Robot::fire() {
 
 void Robot::fireBee() {
     //lance l'abeille
-    int nb_test = 1; //nombre de tentative pour l'abeille
-    for (int i = 0; i < nb_test; i++){
-        setAngleAndWait(0);
-        setAngleAndWait(90);
+    setAngleAndWait(ANGLE_AX12_MID);
+    if (isGreen()) {
+        setAngleAndWait(ANGLE_AX12_VERT);
+    } else {
+        setAngleAndWait(ANGLE_AX12_ORANGE);
     }
 }
 
