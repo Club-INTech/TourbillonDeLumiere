@@ -30,7 +30,7 @@ void loop() {
     delay(100);
     /*On demarre aussi tous les timers*/
     timer.priority(0); //Priorite maximum, il doit absolument s'arreter
-    timer.begin(stopMatch, 98000000); //Timer qui sert pour arreter le match au bout de 100s
+    timer.begin(stopMatch, 95000000); //Timer qui sert pour arreter le match au bout de 100s + temps pour le firebee
 
     delay(10000);
 
@@ -88,6 +88,7 @@ void beginMatch(){
 
 
 void stopMatch() {
+    robot.fireBee();
     analogWrite(PIN_MOTEUR_PWM, 0);
     robot.isMatchFinished = 1;
 }
