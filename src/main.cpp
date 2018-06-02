@@ -63,7 +63,6 @@ void loop() {
 
     //On lance l'abeille
     robot.fireBee();
-    robot.addScore(50);
 
     timer.end();
     timer.priority(240);
@@ -89,6 +88,7 @@ void beginMatch(){
 
 void stopMatch() {
     robot.fireBee();
+    robot.addScore(50);
     analogWrite(PIN_MOTEUR_PWM, 0);
     robot.isMatchFinished = 1;
 }
