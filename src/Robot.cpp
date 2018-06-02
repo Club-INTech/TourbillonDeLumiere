@@ -29,12 +29,12 @@ void Robot::init() {
     /*Declaration des entrees*/
     pinMode(PIN_FIN_COURSE, INPUT);
     pinMode(PIN_JUMPER, INPUT);
-    pinMode(PIN_LASER, INPUT);
+    pinMode(PIN_LASER_ORANGE, INPUT);
     pinMode(PIN_SELECT_SIDE, INPUT);
 
     /*Activation des resistances de pull-up internes*/
     digitalWrite(PIN_FIN_COURSE, HIGH);
-    digitalWrite(PIN_LASER, HIGH);
+    digitalWrite(PIN_LASER_ORANGE, HIGH);
     digitalWrite(PIN_SELECT_SIDE, HIGH);
 
     /*Mise à 0 initiale des sorties*/
@@ -82,7 +82,11 @@ bool Robot::willNotCrashInOtherRobot() {
 
 bool Robot::isUnderLoader() {
     //indique si le robot est sous le tube de balles
-    return digitalRead(PIN_FIN_COURSE_LASER);
+    if (isGreen()){
+        return digitalRead(PIN_LASER_VERT);
+    } else {
+        return digitalRead(PIN_LASER_ORANGE);
+    }
 }
 
 bool Robot::isAtBee() {
