@@ -27,7 +27,7 @@ void loop() {
     while(!isMatchStarted) {
         delay(100);
     }
-
+    delay(100);
     /*On demarre aussi tous les timers*/
     timer.priority(0); //Priorite maximum, il doit absolument s'arreter
     timer.begin(stopMatch, 98000000); //Timer qui sert pour arreter le match au bout de 100s
@@ -44,8 +44,8 @@ void loop() {
     robot.stop();
 
     //On attend que les balles tombent dans le reservoir
-    delay(3000);
     robot.addScore(10);
+    delay(10000);
 
     //On se positionne à côté de l'abeille
     while(!robot.isAtBee() && !robot.isMatchFinished) {
@@ -87,6 +87,5 @@ void beginMatch(){
 
 void stopMatch() {
     analogWrite(PIN_MOTEUR_PWM, 0);
-    analogWrite(PIN_TURBINE, 0);
     robot.isMatchFinished = 1;
 }

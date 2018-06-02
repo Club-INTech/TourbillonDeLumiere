@@ -31,16 +31,17 @@ void Robot::init() {
     pinMode(PIN_JUMPER, INPUT);
     pinMode(PIN_LASER_ORANGE, INPUT);
     pinMode(PIN_SELECT_SIDE, INPUT);
+    pinMode(PIN_LASER_VERT, INPUT);
 
     /*Activation des resistances de pull-up internes*/
     digitalWrite(PIN_FIN_COURSE, HIGH);
     digitalWrite(PIN_LASER_ORANGE, HIGH);
+    digitalWrite(PIN_LASER_VERT, HIGH);
     digitalWrite(PIN_SELECT_SIDE, HIGH);
 
     /*Mise à 0 initiale des sorties*/
     digitalWrite(PIN_MOTEUR_PWM, LOW);
     digitalWrite(PIN_MOTEUR_DIR, LOW);
-    SoftPWMSet(PIN_TURBINE,0);
 
     analogWriteFrequency(PIN_MOTEUR_PWM, PWM_FREQUENCY);
 
@@ -96,14 +97,14 @@ bool Robot::isAtBee() {
 
 void Robot::moveForward(int speedPercent) {
     //fait avancer le robot en avant a une vitesse speedPercent % de sa vitesse max
-    digitalWrite(PIN_MOTEUR_DIR, HIGH);
+    digitalWrite(PIN_MOTEUR_DIR, LOW);
     int speedPwm = map(speedPercent, 0, 100, 0, 125); //on bloque au max pwm a 125 car moteur 12V alimente en 24V
     analogWrite(PIN_MOTEUR_PWM, speedPwm);
 }
 
 void Robot::moveBackward(int speedPercent) {
     //fait reculer le robot pour le recaler au laser
-    digitalWrite(PIN_MOTEUR_DIR,LOW);
+    digitalWrite(PIN_MOTEUR_DIR,HIGH);
     int speedPwm = map(speedPercent,0,100, 0, 125); //on bloque au max pwm a 125 car moteur 12V alimente en 24V
     analogWrite(PIN_MOTEUR_PWM, speedPwm);
 }
@@ -115,11 +116,12 @@ void Robot::stop() {
 
 void Robot::fireBee() {
     //lance l'abeille
-    setAngleAndWait(ANGLE_AX12_MID);
     if (isGreen()) {
+        setAngleAndWait(ANGLE_AX12_ORANGE);
         setAngleAndWait(ANGLE_AX12_VERT);
     } else {
         setAngleAndWait(ANGLE_AX12_ORANGE);
+        setAngleAndWait(ANGLE_AX12_VERT);
     }
 }
 
