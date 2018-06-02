@@ -109,64 +109,6 @@ void Robot::stop() {
     analogWrite(PIN_MOTEUR_PWM, 0);
 }
 
-void Robot::loadBall() {
-    //permet de charger une balle dans le canon
-    uint16_t angle_load;
-
-    angle_load = isGreen() ? ANGLE_AX12_VERT : ANGLE_AX12_ORANGE;
-    if (!isMatchFinished) {
-        setAngleAndWait(angle_load);
-        tiltAX12();
-
-        setAngleAndWait(ANGLE_AX12_MID);
-        tiltAX12();
-
-        int attempt_tilt = 0;
-        while (!hasBallLoaded && !isMatchFinished) {
-            if (attempt_tilt < TENTATIVE_TILT_MAX) {
-                tiltAX12();
-                attempt_tilt++;
-            } else {
-                attempt_tilt = 0;
-                moveBackward(PERCENT_MOTOR_BACK);
-                loadBall();
-            }
-        }
-        if (!isMatchFinished) {
-            moveBackward(PERCENT_MOTOR_BACK);
-            setAngleAndWait(angle_load);
-        }
-    }
-}
-
-void Robot::tiltAX12(){
-    //permet de bouger un peu autour de la position de l'AX12
-    int sign = isGreen() ? -1 : 1;
-    setAngleAndWait(uint16_t(currentAngle + (10*sign)));
-    setAngleAndWait(uint16_t(currentAngle - (10*sign)));
-    delay(100);
-    setAngleAndWait(uint16_t(currentAngle - (10*sign)));
-    setAngleAndWait(uint16_t(currentAngle + (10*sign)));
-}
-
-void Robot::fire() {
-    //permet d'allumer la turbine, en vérifiant qu'une balle est partie grâce au laser
-
-    int attempt_turbine = 0; //nb de tentatives reellement faites
-    hasFiredBall = false; //on remet a zero la variable utilisee par l'interruption
-    while (!hasFiredBall && attempt_turbine < TENTATIVE_MAX) { //tant que la balle n'est pas partie ou qu'on n'a pas fait 4 tentatives
-        if (isGreen()) {
-            SoftPWMSet(PIN_TURBINE, PWM_TURBINE_GREEN);
-        } else {
-            SoftPWMSet(PIN_TURBINE, PWM_TURBINE_ORANGE);
-        }
-        delay(500);
-        SoftPWMSet(PIN_TURBINE, 0);
-        attempt_turbine++;
-        delay(1000);
-    }
-}
-
 void Robot::fireBee() {
     //lance l'abeille
     setAngleAndWait(ANGLE_AX12_MID);
@@ -204,10 +146,4 @@ void Robot::print(String chaine){
 
 void Robot::printScore(){
     afficheur.displayInt(score);
-}
-
-void Robot::adjustScore(){
-    if (isGreen()){
-        score = max(10, score - 5);
-    }
 }
